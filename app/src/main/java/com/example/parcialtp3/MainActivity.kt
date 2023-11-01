@@ -30,10 +30,12 @@ class MainActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch{
             val call = getRetrofit().getDogsByBreeds("$query/images")
             val dogs = call.body()
-            if (call.isSuccessful) {
-                // mostrar
-            }else{
-                // mostrar error
+            runOnUiThread {
+                if (call.isSuccessful) {
+                    // interactuar con recyclerView
+                }else{
+                    // mostrar error?
+                }
             }
         }
     }
