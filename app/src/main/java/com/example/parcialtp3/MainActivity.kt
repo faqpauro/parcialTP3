@@ -18,16 +18,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    private fun getRetrofit():Retrofit {
+    private fun getRetrofit(): ApiInterface {
         return Retrofit.Builder()
             .baseUrl(URL_BASE_API)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+            .create(ApiInterface::class.java)
     }
 
     private fun buscarRaza(query:String){
         CoroutineScope(Dispatchers.IO).launch{
-            val call = getRetrofit().create(ApiInterface::class.java).getDogsByBreeds("$query/images")
+            val call = getRetrofit().getDogsByBreeds("$query/images")
             val dogs = call.body()
             if (call.isSuccessful) {
                 // mostrar
