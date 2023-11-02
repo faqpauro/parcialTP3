@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">parcialTP3</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="publicacion">Publicacion</string>
+    <string name="adopcion">Adopcion</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="home">Home</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="configuracion">Configuracion</string>
+    <string name="perfil">Perfil</string>
+    <string name="user_avatar" />
+
+
+    <string name="drawer_open">"Abrir"</string>
+    <string name="drawer_close">"Cerrar"</string>
 </resources>
