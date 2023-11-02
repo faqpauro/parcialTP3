@@ -10,5 +10,6 @@ interface ApiInterface {
     @GET
     suspend fun getDogsByBreeds(@Url url:String):Response<Dog>
 
+    suspend fun getBreeds(@Url url:String):Response
 
 }
