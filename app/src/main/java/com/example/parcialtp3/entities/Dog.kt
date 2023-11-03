@@ -15,5 +15,6 @@ data class Dog(
     @ColumnInfo(name = "gender") val gender: String,
     @ColumnInfo(name = "weight") val weight: Double,
     @ColumnInfo(name = "location") val location: String,
+    @ColumnInfo(name = "description") val description: String,
     @ColumnInfo(name = "owner_id") val ownerId : Int
 )

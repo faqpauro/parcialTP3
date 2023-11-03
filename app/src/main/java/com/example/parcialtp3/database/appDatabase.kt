@@ -11,7 +11,7 @@ import com.example.parcialtp3.entities.Dog
 import com.example.parcialtp3.entities.User
 import com.example.parcialtp3.entities.UserFavorite
 
-@Database(entities = [User::class, Dog::class, Adoption::class, UserFavorite::class], version = 1, exportSchema = false)
+@Database(entities = [User::class, Dog::class, Adoption::class, UserFavorite::class], version = 2, exportSchema = false)
 @TypeConverters(DateConverter::class)
 abstract class appDatabase : RoomDatabase() {
 
