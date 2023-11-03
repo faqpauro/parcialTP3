@@ -1,12 +1,15 @@
-package com.example.parcialtp3
+package com.example.parcialtp3.activities
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+
 import com.example.parcialtp3.ApiInterface.ApiBuilder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import com.example.parcialtp3.R
+
 
 class MainActivity : AppCompatActivity() {
 
