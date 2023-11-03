@@ -3,13 +3,13 @@
 
         <group>
                 <item
-                    android:id="@+id/configuracion"
-                    android:icon="@drawable/publicacion"
-                    android:title="@string/configuracion" />
-                <item
                     android:id="@+id/perfil"
                     android:icon="@drawable/publicacion"
                     android:title="@string/perfil" />
+                <item
+                    android:id="@+id/configuracion"
+                    android:icon="@drawable/configuracion"
+                    android:title="@string/configuracion" />
         </group>
 
 
