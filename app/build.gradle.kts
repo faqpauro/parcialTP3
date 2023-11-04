@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -62,6 +63,7 @@ dependencies {
     kapt("androidx.room:room-compiler:$room_version")
     implementation("de.hdodenhof:circleimageview:3.1.0")
     implementation("androidx.drawerlayout:drawerlayout:1.2.0")
-
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
 
 }

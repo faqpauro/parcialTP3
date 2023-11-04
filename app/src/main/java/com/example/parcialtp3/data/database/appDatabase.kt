@@ -1,15 +1,15 @@
-package com.example.parcialtp3.database
+package com.example.parcialtp3.data.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.parcialtp3.entities.Adoption
-import com.example.parcialtp3.entities.DateConverter
-import com.example.parcialtp3.entities.Dog
-import com.example.parcialtp3.entities.User
-import com.example.parcialtp3.entities.UserFavorite
+import com.example.parcialtp3.data.entities.Adoption
+import com.example.parcialtp3.data.entities.DateConverter
+import com.example.parcialtp3.data.entities.Dog
+import com.example.parcialtp3.data.entities.User
+import com.example.parcialtp3.data.entities.UserFavorite
 
 @Database(entities = [User::class, Dog::class, Adoption::class, UserFavorite::class], version = 2, exportSchema = false)
 @TypeConverters(DateConverter::class)

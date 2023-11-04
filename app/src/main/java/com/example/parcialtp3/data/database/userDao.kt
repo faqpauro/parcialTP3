@@ -1,8 +1,8 @@
-package com.example.parcialtp3.database
+package com.example.parcialtp3.data.database
 
 import androidx.room.Dao
 import androidx.room.Query
-import com.example.parcialtp3.entities.User
+import com.example.parcialtp3.data.entities.User
 
 @Dao
 interface userDao {
