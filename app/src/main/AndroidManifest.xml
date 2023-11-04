@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
-    <!-- permiso de conexion a internet para uso de api  -->
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- permiso de conexion a internet para uso de api -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -16,6 +15,9 @@
         android:theme="@style/Theme.ParcialTP3"
         tools:targetApi="31">
         <activity
+            android:name=".activities.LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.PerfilActivity"
             android:exported="false" />
         <activity
@@ -23,7 +25,7 @@
             android:exported="false" />
         <activity
             android:name=".activities.MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".activities.MainActivity2"
             android:exported="true">
