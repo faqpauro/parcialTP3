@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".activities.PerfilActivity">
 
+    <include
+        layout="@layout/app_bar_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <TextView
         android:id="@+id/perfil_name"
         android:layout_width="184dp"
@@ -16,7 +21,6 @@
         android:fontFamily="@font/roboto_regular"
         android:text="Martín"
         android:textAlignment="center"
-        android:textColor="#001E2F"
         android:textSize="32sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_subir_foto"
         app:layout_constraintEnd_toEndOf="parent"
