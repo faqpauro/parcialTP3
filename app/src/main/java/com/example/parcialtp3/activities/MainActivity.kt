@@ -1,9 +1,10 @@
 package com.example.parcialtp3.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import android.widget.Button
 import androidx.appcompat.app.AppCompatDelegate
 
 import com.example.parcialtp3.ApiInterface.ApiBuilder
@@ -20,6 +21,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val btnGetStarted = findViewById<Button>(R.id.btn_get_started)
+
+        btnGetStarted.setOnClickListener(){
+            val intent = Intent(this@MainActivity, MainActivity2::class.java)
+            startActivity(intent)
+        }
         val isDarkMode = sharedViewModel.getDarkModeState(this)
         if (isDarkMode) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -29,7 +36,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
+/*
     private fun buscarRaza(query:String){
         val service = ApiBuilder.create()
         CoroutineScope(Dispatchers.IO).launch{
@@ -43,4 +50,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+ */
 }

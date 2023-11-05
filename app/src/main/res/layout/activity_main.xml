@@ -4,15 +4,89 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".activities.MainActivity">
 
+    <ImageView
+        android:id="@+id/image_main_dog"
+        android:layout_width="264dp"
+        android:layout_height="264dp"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="66dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/main_image" />
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/principal_text"
+        android:layout_width="277dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="78dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Adopción de Perritos"
+        android:textAlignment="center"
+        android:textColor="#5F5B5B"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.681"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_main_dog" />
+
+    <TextView
+        android:id="@+id/secondary_text"
+        android:layout_width="285dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="54dp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Make your life more happy with us to \nhave a little new friends"
+        android:textAlignment="center"
+        android:textColor="#ADA8A8"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/principal_text" />
+
+    <Button
+        android:id="@+id/btn_get_started"
+        android:layout_width="198dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="97dp"
+        android:layout_marginEnd="98dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/setting_button_mail"
+        android:fontFamily="@font/poppins_semibold"
+        android:scrollbarAlwaysDrawHorizontalTrack="false"
+        android:scrollbarAlwaysDrawVerticalTrack="false"
+        android:text="Get Started"
+        android:textAllCaps="false"
+        android:textColor="#FAFAFA"
+        android:textColorHighlight="#684343"
+        android:textColorLink="#000000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="128dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="131dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="152dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_get_started"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/secondary_text"
+        app:srcCompat="@drawable/botonera_de_inicio" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
