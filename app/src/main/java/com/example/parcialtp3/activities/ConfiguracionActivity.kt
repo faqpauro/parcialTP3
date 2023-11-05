@@ -72,9 +72,9 @@ class ConfiguracionActivity : AppCompatActivity() {
         val sharedPreferences = getPreferences(MODE_PRIVATE)
         return sharedPreferences.getBoolean("DARK_MODE", false)
     }
-
+    */
     override fun onSupportNavigateUp(): Boolean {
         onBackPressedDispatcher.onBackPressed() // Esto hace que la actividad responda igual que si se presionara el botón de atrás
         return true
-    }*/
+    }
 }
