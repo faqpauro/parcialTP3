@@ -11,7 +11,7 @@ android {
     defaultConfig {
         applicationId = "com.example.parcialtp3"
         minSdk = 26
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -62,6 +62,7 @@ dependencies {
     kapt("androidx.room:room-compiler:$room_version")
     implementation("de.hdodenhof:circleimageview:3.1.0")
     implementation("androidx.drawerlayout:drawerlayout:1.2.0")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
 
 
 }
