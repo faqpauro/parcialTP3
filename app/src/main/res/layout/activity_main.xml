@@ -58,7 +58,6 @@
         android:layout_width="198dp"
         android:layout_height="52dp"
         android:layout_marginStart="97dp"
-        android:layout_marginTop="7dp"
         android:layout_marginEnd="98dp"
         android:layout_marginBottom="28dp"
         android:background="@drawable/setting_button_mail"
@@ -74,39 +73,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_scroll3" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/btn_scroll2"
-        android:layout_width="24dp"
-        android:layout_height="16dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="9dp"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="128dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="131dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="152dp"
+        android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_get_started"
-        app:layout_constraintEnd_toStartOf="@+id/btn_scroll3"
-        app:layout_constraintTop_toBottomOf="@+id/secondary_text"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/btn_scroll3"
-        android:layout_width="23dp"
-        android:layout_height="18dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="171dp"
-        android:backgroundTint="@color/button_main_color"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/secondary_text" />
-
-    <Button
-        android:id="@+id/btn_scroll1"
-        android:layout_width="24dp"
-        android:layout_height="16dp"
-        android:layout_marginStart="169dp"
-        android:layout_marginTop="13dp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_scroll2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/secondary_text" />
+        app:layout_constraintTop_toBottomOf="@+id/secondary_text"
+        app:srcCompat="@drawable/botonera_de_inicio" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
