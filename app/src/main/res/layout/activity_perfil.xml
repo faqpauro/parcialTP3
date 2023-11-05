@@ -7,55 +7,55 @@
     tools:context=".activities.PerfilActivity">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="115dp"
-        android:layout_height="17dp"
-        android:text="PERFIL ACTIVITY"
+        android:id="@+id/perfil_name"
+        android:layout_width="184dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="114dp"
+        android:layout_marginEnd="114dp"
+        android:layout_marginBottom="11dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="Martín"
+        android:textAlignment="center"
+        android:textColor="#001E2F"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_subir_foto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imagen_foto_perfil" />
+
+    <ImageView
+        android:id="@+id/imagen_foto_perfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="146dp"
+        android:layout_marginTop="87dp"
+        android:layout_marginEnd="146dp"
+        app:layout_constraintBottom_toTopOf="@+id/perfil_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/perfi_imagen" />
+
+    <Button
+        android:id="@+id/btn_subir_foto"
+        android:layout_width="135dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="137dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="139dp"
+        android:layout_marginBottom="380dp"
+        android:background="@drawable/setting_button_perfil"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Subir Foto"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#F4F1DE"
+        android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/perfil_name" />
 </androidx.constraintlayout.widget.ConstraintLayout>
-    android:orientation="vertical">
-
-    <!-- Include your app bar -->
-    <include
-        layout="@layout/app_bar_main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_image"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:src="@drawable/publicacion"
-            app:civ_border_width="2dp"
-            app:civ_border_color="#FF000000"/>
-
-        <TextView
-            android:id="@+id/profileName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nombre"
-            android:textSize="24sp"
-            android:paddingBottom="8dp"/>
-
-        <Button
-            android:id="@+id/uploadButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Subir Foto"/>
-    </LinearLayout>
-</ScrollView>
-</LinearLayout>
