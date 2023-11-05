@@ -5,17 +5,22 @@ import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.example.parcialtp3.R
+import com.example.parcialtp3.viewmodels.SharedViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity2 : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
+
+    private val sharedViewModel: SharedViewModel by viewModels()
 
     private lateinit var bottomNavView: BottomNavigationView
     private lateinit var navHostFragment2: NavHostFragment
@@ -53,6 +58,14 @@ class MainActivity2 : AppCompatActivity(), NavigationView.OnNavigationItemSelect
 
         navigationView2.setNavigationItemSelectedListener(this)
 
+
+
+        val isDarkMode = sharedViewModel.getDarkModeState(this)
+        if (isDarkMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {

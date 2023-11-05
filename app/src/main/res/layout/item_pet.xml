@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_package_item"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="8dp">
+
+    <ImageView
+        android:contentDescription="imagen mascota"
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_background" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/nombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/raza"
+            android:fontFamily="@font/quicksand"
+            android:text="nombreAnimal"
+            android:textColor="@android:color/black"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:contentDescription="icono"
+            android:id="@+id/raza_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignBottom="@+id/raza"
+            android:layout_above="@+id/subraza"
+            android:src="@drawable/huellas" />
+
+        <TextView
+            android:id="@+id/raza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/subraza"
+            android:layout_toEndOf="@+id/raza_icon"
+            android:fontFamily="@font/quicksand"
+            android:text="Raza"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:layout_marginStart="10dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:contentDescription="icono"
+            android:id="@+id/subraza_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/huellas" />
+
+        <TextView
+            android:id="@+id/subraza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/subraza_icon"
+            android:fontFamily="@font/quicksand"
+            android:layout_marginStart="10dp"
+
+            android:text="Subraza"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textSize="15sp" />
+
+
+
+        <TextView
+            android:id="@+id/edad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
+            android:text="edad"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/genero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@+id/edad"
+            android:fontFamily="@font/quicksand"
+            android:text="edad"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
