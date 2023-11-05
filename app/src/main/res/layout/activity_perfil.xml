@@ -14,9 +14,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
-    android:orientation="vertical">
+        app:layout_constraintTop_toTopOf="parent"
+    android:orientation="vertical"/>
 
     <!-- Include your app bar -->
     <include
@@ -35,14 +34,6 @@
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_image"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:src="@drawable/publicacion"
-            app:civ_border_width="2dp"
-            app:civ_border_color="#FF000000"/>
-
         <TextView
             android:id="@+id/profileName"
             android:layout_width="wrap_content"
@@ -58,4 +49,4 @@
             android:text="Subir Foto"/>
     </LinearLayout>
 </ScrollView>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
