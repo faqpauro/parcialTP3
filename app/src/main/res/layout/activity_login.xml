@@ -64,7 +64,7 @@
                 android:background="@drawable/radius"
                 android:backgroundTint="#DCDCDC"
                 android:fontFamily="@font/quicksand"
-                android:hint="Avatar"
+                android:hint="@string/contrase_a"
                 android:importantForAutofill="no"
                 android:inputType="textPassword"
                 android:textAlignment="center"
