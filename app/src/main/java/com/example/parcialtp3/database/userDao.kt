@@ -1,6 +1,8 @@
 package com.example.parcialtp3.database
 
 import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.parcialtp3.entities.User
 
@@ -16,4 +18,6 @@ interface userDao {
     @Query("UPDATE user SET dark_mode_selection = :newValue WHERE id = :id")
     fun updateUserDarkModeSelection(newValue: Boolean, id: Int)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertUser(user: User)
 }
