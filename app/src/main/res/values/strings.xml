@@ -12,4 +12,8 @@
 
     <string name="drawer_open">"Abrir"</string>
     <string name="drawer_close">"Cerrar"</string>
+    <string name="usuario">Usuario</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="register_text"><u>Registrate acá</u></string>
+
 </resources>

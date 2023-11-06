@@ -11,6 +11,6 @@ data class User(
     @ColumnInfo(name = "username") val username: String,
     @ColumnInfo(name = "password") val password: String,
     @ColumnInfo(name = "email") val email : String,
-    @ColumnInfo(name = "avatar_url") val avatar_url : String,
+    @ColumnInfo(name = "avatar_url") val avatar_url : String?,
     @ColumnInfo(name = "dark_mode_selection") val darkModeSelection : Boolean
 )

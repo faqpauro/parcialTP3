@@ -12,7 +12,7 @@ android {
     defaultConfig {
         applicationId = "com.example.parcialtp3"
         minSdk = 26
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -65,5 +65,5 @@ dependencies {
     implementation("androidx.drawerlayout:drawerlayout:1.2.0")
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
-
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
 }
