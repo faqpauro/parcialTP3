@@ -1,14 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.Publicacion">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/publicacion" />
+        tools:context=".TuActividad">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
 
+            <!-- Sección para agregar fotos -->
+            <ImageView
+                android:id="@+id/imageViewFotoPerrito"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/default_dog_image"
+                android:background="@drawable/circular_background"
+                android:padding="30dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Botón para agregar fotos -->
+            <Button
+                android:id="@+id/buttonAgregarFotos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Agregar Fotos"
+                app:layout_constraintTop_toBottomOf="@id/imageViewFotoPerrito"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="8dp" />
+
+            <!-- Raza y Subraza -->
+            <EditText
+                android:id="@+id/editTextRaza"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Raza y Subraza (opcional)"
+                app:layout_constraintTop_toBottomOf="@id/buttonAgregarFotos"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp" />
+
+            <!-- Nombre del Perrito -->
+            <EditText
+                android:id="@+id/editTextNombre"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Nombre del Perrito"
+                app:layout_constraintTop_toBottomOf="@id/editTextRaza"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Edad -->
+            <EditText
+                android:id="@+id/editTextEdad"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="Edad"
+                app:layout_constraintTop_toBottomOf="@id/editTextNombre"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Género (Macho o Hembra) -->
+            <RadioGroup
+                android:id="@+id/radioGroupGenero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/editTextEdad"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <RadioButton
+                    android:id="@+id/radioButtonMacho"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Macho" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonHembra"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hembra" />
+
+            </RadioGroup>
+
+            <!-- Descripción -->
+            <EditText
+                android:id="@+id/editTextDescripcion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Descripción"
+                app:layout_constraintTop_toBottomOf="@id/radioGroupGenero"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Peso -->
+            <EditText
+                android:id="@+id/editTextPeso"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:hint="Peso (kg)"
+                app:layout_constraintTop_toBottomOf="@id/editTextDescripcion"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Ubicación -->
+            <EditText
+                android:id="@+id/editTextUbicacion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Ubicación"
+                app:layout_constraintTop_toBottomOf="@id/editTextPeso"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Nombre del Adoptante -->
+            <EditText
+                android:id="@+id/editTextNombreAdoptante"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Nombre del Adoptante"
+                app:layout_constraintTop_toBottomOf="@id/editTextUbicacion"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Contacto del Adoptante -->
+            <EditText
+                android:id="@+id/editTextContactoAdoptante"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:hint="Contacto del Adoptante (celular)"
+                app:layout_constraintTop_toBottomOf="@id/editTextNombreAdoptante"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Observaciones del Tránsito -->
+            <EditText
+                android:id="@+id/editTextObservacionesTransito"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Observaciones del Tránsito"
+                app:layout_constraintTop_toBottomOf="@id/editTextContactoAdoptante"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <Button
+                android:id="@+id/btn_post_dog"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:text="Publicar en Adopción"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:background="@drawable/setting_button_mail"
+                android:elevation="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="50dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </FrameLayout>
