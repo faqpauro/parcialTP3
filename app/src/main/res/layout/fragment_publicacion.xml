@@ -8,6 +8,18 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+
+    <TextView
+        android:id="@+id/textViewTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Publicación"
+        android:textSize="30sp"
+        android:textColor="#333333"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"/>
+
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -31,7 +43,7 @@
                 android:src="@drawable/default_dog_image"
                 android:background="@drawable/circular_background"
                 android:padding="30dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="50dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
