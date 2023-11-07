@@ -2,17 +2,19 @@ package com.example.parcialtp3.activities
 
 import android.content.Intent
 import android.content.res.Configuration
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
+import com.bumptech.glide.Glide
 import com.example.parcialtp3.R
 import com.example.parcialtp3.viewmodels.SharedViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -29,6 +31,7 @@ class MainActivity2 : AppCompatActivity(), NavigationView.OnNavigationItemSelect
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navigationView2: NavigationView
     private lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var nameUser: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
@@ -61,6 +64,20 @@ class MainActivity2 : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         navigationView2.setNavigationItemSelectedListener(this)
 
 
+        val navigationView: NavigationView = findViewById(R.id.nav_view2)
+        val headerView = navigationView.getHeaderView(0)
+        val nameUserTextView: TextView = headerView.findViewById(R.id.nombre_usuario)
+        val imagePerfil: ImageView = headerView.findViewById(R.id.nav_header_imageView)
+        val user = sharedViewModel.getUserData(this)
+        if (user != null) {
+            nameUserTextView.text = user.username
+            if (user.avatar_url != null) {
+                Glide.with(this) // Contexto
+                    .load(user.avatar_url) // URL de la imagen
+                    .circleCrop() // Esta línea hace el recorte circular
+                    .into(imagePerfil) // ImageView donde se cargará la imagen
+            }
+        }
 
         val isDarkMode = sharedViewModel.getDarkModeState(this)
         if (isDarkMode) {
