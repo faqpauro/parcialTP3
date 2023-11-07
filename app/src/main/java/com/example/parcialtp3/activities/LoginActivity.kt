@@ -48,13 +48,12 @@ class LoginActivity : AppCompatActivity() {
             val usuarioLogin = findViewById<EditText>(R.id.usuarioLogin).text.toString()
             val contraseñaLogin = findViewById<EditText>(R.id.contraseñaLogin).text.toString()
 
-            Log.d("Debug", "Usuario: $usuarioLogin")
-            Log.d("Debug", "Contraseña: $contraseñaLogin")
             if (usuarioLogin.isNotEmpty() && contraseñaLogin.isNotEmpty()) {
 
                 lifecycleScope.launch {
                     val userExists = userRepository.checkCredentials(usuarioLogin, contraseñaLogin)
-                    if(userExists){
+                    if(userExists != null){
+                        sharedViewModel.setUserData(this@LoginActivity, userExists)
                         val intent = Intent(this@LoginActivity, MainActivity2::class.java)
                         startActivity(intent)
                     } else {
