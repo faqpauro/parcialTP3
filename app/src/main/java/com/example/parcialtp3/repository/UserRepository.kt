@@ -19,4 +19,9 @@ class UserRepository @Inject constructor(
         return cargado > 0 // me devuelve el id o 0
     }
 
+    suspend fun updateUserImage(avatarUrl: String, id: Int?): Boolean {
+        val actualizado = userDao.updateUserAvatar(avatarUrl, id)
+        return actualizado > 0 // si es mayor a 0, actualizó
+    }
+
 }

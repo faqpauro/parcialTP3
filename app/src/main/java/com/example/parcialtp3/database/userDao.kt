@@ -20,4 +20,7 @@ interface userDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertUser(user: User): Long
+
+    @Query("UPDATE user SET avatar_url = :avatar_url WHERE id = :id")
+    fun updateUserAvatar(avatar_url: String, id: Int?):Int
 }
