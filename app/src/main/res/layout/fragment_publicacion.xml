@@ -112,6 +112,7 @@
                     android:backgroundTint="#DCDCDC"
                     android:fontFamily="@font/quicksand"
                     android:hint="@string/edad"
+                    android:inputType="number"
                     android:importantForAutofill="no"
                     android:textAlignment="center"
                     android:textColor="#000000"
@@ -130,6 +131,7 @@
                     android:backgroundTint="#DCDCDC"
                     android:fontFamily="@font/quicksand"
                     android:hint="@string/peso_kg"
+                    android:inputType="number"
                     android:importantForAutofill="no"
                     android:textAlignment="center"
                     android:textColor="#000000"
@@ -199,6 +201,7 @@
                     android:backgroundTint="#DCDCDC"
                     android:fontFamily="@font/quicksand"
                     android:hint="@string/tu_telefono"
+                    android:inputType="phone"
                     android:importantForAutofill="no"
                     android:textAlignment="center"
                     android:textColor="#000000"
@@ -240,6 +243,7 @@
                         android:id="@+id/radioButtonMacho"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checked="true"
                         android:text="Macho" />
 
                     <RadioButton

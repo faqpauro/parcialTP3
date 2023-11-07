@@ -19,7 +19,7 @@ interface dogDao {
     fun getDogsBySubBreed(breed: String, subBreed: String): List<Dog>
 
     @Insert(onConflict = OnConflictStrategy.ABORT)
-    fun createNewDog(dog: Dog?)
+    fun createNewDog(dog: Dog?): Long
 
     @Query("SELECT * FROM dog")
     fun getAllDogs() : List<Dog>
