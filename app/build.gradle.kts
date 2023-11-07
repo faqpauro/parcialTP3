@@ -1,8 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.kapt")
-    id("com.google.dagger.hilt.android")
+    id ("org.jetbrains.kotlin.kapt")
+    id ("com.google.dagger.hilt.android")
 }
 
 
@@ -84,4 +84,5 @@ dependencies {
 
     testImplementation ("com.google.dagger:hilt-android-testing:2.48.1")
     kaptTest ("com.google.dagger:hilt-compiler:2.48.1")
+
 }
