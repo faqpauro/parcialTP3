@@ -1,7 +1,7 @@
 package com.example.parcialtp3.data
 
-import com.example.parcialtp3.data.database.dogDao
-import com.example.parcialtp3.data.database.userDao
+import com.example.parcialtp3.database.dogDao
+import com.example.parcialtp3.database.userDao
 import javax.inject.Inject
 
 

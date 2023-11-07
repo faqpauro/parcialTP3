@@ -1,4 +1,4 @@
-package com.example.parcialtp3.data.database
+package com.example.parcialtp3.database
 
 import androidx.room.Dao
 import androidx.room.Insert

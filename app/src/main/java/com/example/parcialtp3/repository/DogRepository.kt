@@ -10,7 +10,7 @@ class DogRepository @Inject constructor(
     val apiService : DogCeoApi,
     private val appDatabase: AppDatabase
 ) {
-    private val dogDao:dogDao = appDatabase.dogDao()
+    private val dogDao: dogDao = appDatabase.dogDao()
     fun createDogs(){
         dogDao.createNewDog(
             Dog(

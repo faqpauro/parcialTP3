@@ -1,4 +1,4 @@
-package com.example.parcialtp3.data.entities
+package com.example.parcialtp3.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

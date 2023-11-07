@@ -5,11 +5,16 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.parcialtp3.entities.Adoption
 import com.example.parcialtp3.entities.DateConverter
 import com.example.parcialtp3.entities.Dog
 import com.example.parcialtp3.entities.User
 import com.example.parcialtp3.entities.UserFavorite
+import com.example.parcialtp3.database.userDao
+import com.example.parcialtp3.database.dogDao
+import com.example.parcialtp3.database.adoptionDao
 
 @Database(entities = [User::class, Dog::class, Adoption::class, UserFavorite::class], version = 3, exportSchema = false)
 @TypeConverters(DateConverter::class)
