@@ -15,7 +15,7 @@ class DogRepository @Inject constructor(
 
     private val breedList: MutableList<Filter> = mutableListOf()
 
-    fun createDogs() {
+    fun createDogs(){
 
         dogDao.createNewDog(
             Dog(
