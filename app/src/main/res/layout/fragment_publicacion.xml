@@ -80,12 +80,12 @@
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
-                    app:layout_constraintEnd_toStartOf="@+id/contraseñaLogin"
+                    app:layout_constraintEnd_toStartOf="@+id/editTextSubRaza"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/buttonAgregarFotos" />
 
                 <EditText
-                    android:id="@+id/contraseñaLogin"
+                    android:id="@+id/editTextSubRaza"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
@@ -136,7 +136,7 @@
                     android:textColorHint="#000000"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/editTextEdad"
-                    app:layout_constraintTop_toBottomOf="@+id/contraseñaLogin" />
+                    app:layout_constraintTop_toBottomOf="@+id/editTextSubRaza" />
 
                 <EditText
                     android:id="@+id/editTextNombre"
@@ -191,7 +191,7 @@
 
 
                 <EditText
-                    android:id="@+id/editTextContactoAdoptante"
+                    android:id="@+id/editTextContactoDueño"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginTop="20dp"
@@ -203,12 +203,12 @@
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
-                    app:layout_constraintEnd_toStartOf="@+id/editTextNombreAdoptante"
+                    app:layout_constraintEnd_toStartOf="@+id/editTextNombreDueño"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/editTextDescripcion" />
 
                 <EditText
-                    android:id="@+id/editTextNombreAdoptante"
+                    android:id="@+id/editTextNombreDueño"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
@@ -222,7 +222,7 @@
                     android:textColor="#000000"
                     android:textColorHint="#000000"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/editTextContactoAdoptante"
+                    app:layout_constraintStart_toEndOf="@+id/editTextContactoDueño"
                     app:layout_constraintTop_toBottomOf="@+id/editTextDescripcion" />
 
                 <RadioGroup
@@ -231,10 +231,10 @@
                     android:layout_marginTop="20dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    app:layout_constraintBottom_toTopOf="@+id/registerButton"
+                    app:layout_constraintBottom_toTopOf="@+id/btnPostDog"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/editTextNombreAdoptante">
+                    app:layout_constraintTop_toBottomOf="@id/editTextNombreDueño">
 
                     <RadioButton
                         android:id="@+id/radioButtonMacho"
@@ -252,7 +252,7 @@
 
 
                 <Button
-                    android:id="@+id/registerButton"
+                    android:id="@+id/btnPostDog"
                     android:layout_width="206dp"
                     android:layout_height="48dp"
                     android:layout_marginTop="20dp"
