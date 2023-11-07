@@ -8,14 +8,14 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.parcialtp3.R
-import com.example.parcialtp3.database.appDatabase
+import com.example.parcialtp3.database.AppDatabase
 import com.example.parcialtp3.database.userDao
 import com.example.parcialtp3.entities.User
 import com.example.parcialtp3.viewmodels.SharedViewModel
 
 class RegisterActivity : AppCompatActivity() {
 
-    private var db: appDatabase? = null
+    private var db: AppDatabase? = null
     private var userDao: userDao? = null
 
     lateinit var registerButton: Button
@@ -61,7 +61,7 @@ class RegisterActivity : AppCompatActivity() {
             sharedViewModel.saveDarkModeState(this, isChecked)
             updateDarkModeState(isChecked)
         }
-        db=appDatabase.getAppDataBase(this)
+        db=AppDatabase.getAppDataBase(this)
         userDao = db?.userDao()
         val username: String = userInput.text.toString()
         val contraseña: String = passwordInput.text.toString()
