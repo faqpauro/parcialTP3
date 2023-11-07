@@ -1,22 +1,30 @@
 package com.example.parcialtp3.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Switch
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.lifecycleScope
 import com.example.parcialtp3.R
 import com.example.parcialtp3.database.AppDatabase
 import com.example.parcialtp3.database.userDao
 import com.example.parcialtp3.entities.User
+import com.example.parcialtp3.repository.UserRepository
 import com.example.parcialtp3.viewmodels.SharedViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class RegisterActivity : AppCompatActivity() {
 
-    private var db: AppDatabase? = null
-    private var userDao: userDao? = null
+    @Inject
+    lateinit var userRepository: UserRepository
 
     lateinit var registerButton: Button
     lateinit var userInput: TextView
@@ -61,17 +69,32 @@ class RegisterActivity : AppCompatActivity() {
             sharedViewModel.saveDarkModeState(this, isChecked)
             updateDarkModeState(isChecked)
         }
-        db=AppDatabase.getAppDataBase(this)
-        userDao = db?.userDao()
-        val username: String = userInput.text.toString()
-        val contraseña: String = passwordInput.text.toString()
-        val telefono: String = phoneInput.text.toString()
-        val email: String = emailInput.text.toString()
-        val avatar: String = avatar.text.toString()
+
 
         registerButton.setOnClickListener{
-            //cargar mas informacion de usuario
-            userDao?.insertUser(User(i, username,contraseña,email,avatar,darkModeInput.isChecked))
+
+            val username: String = userInput.text.toString()
+            val contraseña: String = passwordInput.text.toString()
+            val telefono: String = phoneInput.text.toString()
+            val email: String = emailInput.text.toString()
+            val avatar: String = avatar.text.toString()
+            val darkMode: Boolean = darkModeInput.isChecked
+
+            if (username.isEmpty() || contraseña.isEmpty() || telefono.isEmpty() || email.isEmpty() || avatar.isEmpty()) {
+                Toast.makeText(this@RegisterActivity, "Todos los campos deben estar completados", Toast.LENGTH_SHORT).show()
+            } else {
+                lifecycleScope.launch {
+                    if(userRepository.registerNewUser(User(0, username, contraseña, email, avatar, darkMode))){
+                        // userRepository.registerNewUser(User(0, username, contraseña, email, telefono , avatar, darkMode))
+                        Toast.makeText(this@RegisterActivity, "Usuario cargado con éxito", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(this@RegisterActivity, "Ocurrió un error interno al intentar cargar un usuario.", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+
         }
     }
 

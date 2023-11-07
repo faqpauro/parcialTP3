@@ -19,5 +19,5 @@ interface userDao {
     fun updateUserDarkModeSelection(newValue: Boolean, id: Int)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertUser(user: User)
+    fun insertUser(user: User): Long
 }
