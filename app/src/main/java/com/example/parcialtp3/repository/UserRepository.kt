@@ -9,14 +9,19 @@ class UserRepository @Inject constructor(
     private val appDatabase: AppDatabase
 ) {
     private val userDao: userDao = appDatabase.userDao()
-    suspend fun checkCredentials(username: String, password: String):Boolean {
+    suspend fun checkCredentials(username: String, password: String):User? {
         val usuarioExiste = userDao.getUserByCredentials(username, password)
-        return usuarioExiste != null
+        return usuarioExiste
     }
 
     suspend fun registerNewUser(user: User): Boolean {
         val cargado = userDao.insertUser(user)
         return cargado > 0 // me devuelve el id o 0
+    }
+
+    suspend fun updateUserImage(avatarUrl: String, id: Int?): Boolean {
+        val actualizado = userDao.updateUserAvatar(avatarUrl, id)
+        return actualizado > 0 // si es mayor a 0, actualizó
     }
 
 }

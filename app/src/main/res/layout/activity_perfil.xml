@@ -25,20 +25,19 @@
         android:textSize="32sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_subir_foto"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imagen_foto_perfil" />
 
     <ImageView
         android:id="@+id/imagen_foto_perfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginStart="146dp"
         android:layout_marginTop="87dp"
         android:layout_marginEnd="146dp"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/perfil_name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/perfi_imagen" />
@@ -60,7 +59,6 @@
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/perfil_name" />
 </androidx.constraintlayout.widget.ConstraintLayout>
