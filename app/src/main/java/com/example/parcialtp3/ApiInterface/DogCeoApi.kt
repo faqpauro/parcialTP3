@@ -8,5 +8,4 @@ import retrofit2.http.Url
 interface DogCeoApi {
     @GET
     suspend fun getDogsByBreeds(@Url url:String):Response<DogResponse>
-
 }

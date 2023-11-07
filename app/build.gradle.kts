@@ -2,8 +2,12 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("org.jetbrains.kotlin.kapt")
     id("com.google.dagger.hilt.android")
 }
+
+
+
 
 android {
     namespace = "com.example.parcialtp3"
@@ -42,6 +46,7 @@ android {
 }
 
 dependencies {
+    implementation("com.google.android.gms:play-services-fido:20.1.0")
     val room_version = "2.5.0"
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -67,4 +72,14 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
     implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.16.0")
+    implementation ("com.google.dagger:dagger:2.46.1")
+    kapt ("com.google.dagger:dagger-compiler:2.46.1")
+    implementation ("com.google.dagger:hilt-android:2.48.1")
+    kapt ("com.google.dagger:hilt-compiler:2.48.1")
+    androidTestImplementation  ("com.google.dagger:hilt-android-testing:2.48.1")
+    kaptAndroidTest ("com.google.dagger:hilt-compiler:2.48.1")
+    testImplementation ("com.google.dagger:hilt-android-testing:2.48.1")
+    kaptTest ("com.google.dagger:hilt-compiler:2.48.1")
 }
