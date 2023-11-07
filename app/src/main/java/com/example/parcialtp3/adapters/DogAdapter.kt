@@ -1,17 +1,20 @@
 package com.example.parcialtp3.adapters
 
 import android.content.Context
+import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.DrawableRes
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parcialtp3.R
 import com.example.parcialtp3.entities.Dog
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
+import com.example.parcialtp3.entities.UserFavorite
 
 
 class DogAdapter(private val context: Context, private val dogList: List<Dog>) : RecyclerView.Adapter<DogAdapter.ViewHolder>(){
@@ -32,6 +35,7 @@ class DogAdapter(private val context: Context, private val dogList: List<Dog>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
         val dog = dogList[position]
         holder.bind(dog)
     }
@@ -56,8 +60,16 @@ class DogAdapter(private val context: Context, private val dogList: List<Dog>) :
         private val petSubRaza: TextView = itemView.findViewById(R.id.pet_subraza)
         private val petEdad: TextView = itemView.findViewById(R.id.pet_age)
         private val petGenero: TextView = itemView.findViewById(R.id.pet_gender)
+        private val favoriteButton: ImageView = itemView.findViewById(R.id.favorite)
+        var isFavorite = false
+
 
         init {
+            val favoriteImageView = itemView.findViewById<ImageView>(R.id.favorite)
+            favoriteImageView.setOnClickListener{
+            //    val isFavorite = dog.isFavorite
+            }
+
             itemView.setOnClickListener{
                 val position =adapterPosition
                 if(position!= RecyclerView.NO_POSITION){
@@ -71,6 +83,22 @@ class DogAdapter(private val context: Context, private val dogList: List<Dog>) :
             petSubRaza.text = dog.subBreed
             petEdad.text = dog.age.toString()
             petGenero.text = dog.gender
+            favoriteButton.tag = dog.id
+
+            favoriteButton.setOnClickListener{
+                val dogId : Int = favoriteButton.tag as Int
+                //PROBANDO
+                val userFavorite = UserFavorite(0, 1, dogId)
+                
+                //ISFAVORITE DEBERIA SALIR DEL ID DEL USUARIO
+                if(isFavorite){
+                    favoriteButton.setImageResource(R.drawable.favorite_mark)
+                    isFavorite = false
+                }else{
+                    favoriteButton.setImageResource(R.drawable.favorite_mark_fill)
+                    isFavorite = true
+                }
+            }
 
             val requestOptions = RequestOptions().transform()
             Glide.with(context)

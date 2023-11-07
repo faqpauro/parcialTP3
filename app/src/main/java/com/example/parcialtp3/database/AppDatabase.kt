@@ -20,12 +20,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): userDao
     abstract fun dogDao(): dogDao
     abstract fun adoptionDao(): adoptionDao
+    abstract fun UserFavoriteDao() : UserFavoriteDao
 
-    fun clearAllData() {
-        runInTransaction {
-            dogDao().deleteAllDogs()
-        }
-    }
     companion object {
         var INSTANCE: AppDatabase? = null
         fun getAppDataBase(context: Context): AppDatabase? {
