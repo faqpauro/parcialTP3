@@ -17,9 +17,9 @@ class DogRepository @Inject constructor(
 
     fun createNewDog( name : String, breed : String, subBreed : String,
                       gender : String, weight : Double, location : String,
-                      description : String, owner_id : Int, age : Int) {
+                      description : String, owner_id : Int, age : Int) : Boolean {
 
-        dogDao.createNewDog(
+        val cargado = dogDao.createNewDog(
             Dog(
                 0,
                 name,
@@ -34,6 +34,7 @@ class DogRepository @Inject constructor(
                 age
             )
         )
+        return cargado > 0
     }
     fun createDogs(){
 
