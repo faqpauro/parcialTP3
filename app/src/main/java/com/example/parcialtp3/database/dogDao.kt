@@ -20,4 +20,11 @@ interface dogDao {
 
     @Insert(onConflict = OnConflictStrategy.ABORT)
     fun createNewDog(dog: Dog?)
+
+    @Query("SELECT * FROM dog")
+    fun getAllDogs() : List<Dog>
+
+    @Query("DELETE FROM dog")
+    fun deleteAllDogs()
+
 }
