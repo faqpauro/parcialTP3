@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/card_package_item"
-    android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:id="@+id/card_package_itemfilter"
+    android:layout_width="wrap_content"
+    android:layout_height="35dp"
     android:layout_margin="10dp"
     app:cardCornerRadius="40dp"
     app:cardElevation="7dp">
@@ -11,26 +11,26 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="15dp">
+        android:padding="6dp">
 
         <ImageView
             android:contentDescription="icono filtro"
             android:id="@+id/filter_icon"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_alignBottom="@+id/filtro"
+            android:layout_alignBottom="@+id/filtro_title"
             android:src="@drawable/huellas" />
 
 
         <TextView
-            android:id="@+id/filtro"
+            android:id="@+id/filtro_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand"
             android:layout_toEndOf="@+id/filter_icon"
             android:text="filtroRaza"
             android:textColor="@android:color/black"
-            android:textSize="25sp"
+            android:textSize="15dp"
             android:textStyle="bold" />
 
 

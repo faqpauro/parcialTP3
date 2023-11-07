@@ -1,6 +1,7 @@
 package com.example.parcialtp3.repository
 
 import com.example.parcialtp3.ApiInterface.DogCeoApi
+import com.example.parcialtp3.entities.Filter
 import com.example.parcialtp3.database.AppDatabase
 import com.example.parcialtp3.database.dogDao
 import com.example.parcialtp3.entities.Dog
@@ -11,12 +12,15 @@ class DogRepository @Inject constructor(
     private val appDatabase: AppDatabase
 ) {
     private val dogDao: dogDao = appDatabase.dogDao()
+
+    private val breedList: MutableList<Filter> = mutableListOf()
+
     fun createDogs(){
+
         dogDao.createNewDog(
             Dog(
                 0,
-                "Florencia"
-                ,"Dingo",
+                "Florencia", "Dingo",
                 "",
                 "https://images.dog.ceo/breeds/dingo/n02115641_1228.jpg",
                 "Femenino",
@@ -31,8 +35,7 @@ class DogRepository @Inject constructor(
         dogDao.createNewDog(
             Dog(
                 0,
-                "Ramon"
-                ,"Mastiff",
+                "Ramon", "Mastiff",
                 "Tibetan",
                 "https://images.dog.ceo/breeds/mastiff-tibetan/n02108551_660.jpg",
                 "Maculino",
@@ -47,8 +50,7 @@ class DogRepository @Inject constructor(
         dogDao.createNewDog(
             Dog(
                 0,
-                "Leonarda"
-                ,"Ovcharka",
+                "Leonarda", "Ovcharka",
                 "Caucasian",
                 "https://images.dog.ceo/breeds/ovcharka-caucasian/IMG_20190826_112025.jpg",
                 "Femenino",
@@ -63,8 +65,7 @@ class DogRepository @Inject constructor(
         dogDao.createNewDog(
             Dog(
                 0,
-                "Bobby"
-                ,"Boxer",
+                "Bobby", "Boxer",
                 "",
                 "https://images.dog.ceo/breeds/boxer/n02108089_6295.jpg",
                 "Femenino",
@@ -76,13 +77,30 @@ class DogRepository @Inject constructor(
             )
         )
     }
-        suspend fun getAllDogs() : List<Dog> {
-            return dogDao.getAllDogs()
-        }
 
-     fun clearAllData(){
+    fun getAllDogs(): List<Dog> {
+        return dogDao.getAllDogs()
+    }
+
+    fun clearAllData() {
         return dogDao.deleteAllDogs()
     }
 
-
+    fun getBreedList(): List<Filter> {
+        breedList.clear()
+        val dogList = getAllDogs()
+        for (dog in dogList) {
+            val breed = dog.breed
+            if (breed.isNotEmpty() && !breedList.contains(Filter(breed))) {
+                breedList.add(Filter(breed))
+            }
+            val subBreed = dog.subBreed
+            if (subBreed.isNotEmpty() && !breedList.contains(Filter(subBreed))) {
+                breedList.add(Filter(subBreed))
+            }
+        }
+        return breedList
+    }
 }
+
+
