@@ -2,5 +2,5 @@
 - Matias Martinez
 - Tomas Florimo
 - Esteban Lopez
-- Macaela Zarate
+- Micaela Zarate
 - Facundo Pauro
