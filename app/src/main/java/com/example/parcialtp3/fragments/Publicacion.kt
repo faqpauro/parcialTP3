@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
@@ -26,8 +27,11 @@ class Publicacion : Fragment() {
     private val sharedViewModel: SharedViewModel by viewModels()
     @Inject
     lateinit var dogRepository: DogRepository
-    private var param1: String? = null
-    private var param2: String? = null
+    lateinit var breedsList : List<String>
+    lateinit var selectedBreed : String
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,20 +45,53 @@ class Publicacion : Fragment() {
         return inflater.inflate(R.layout.fragment_publicacion, container, false)
     }
 
+    private fun isValidBreed(breed : String): Boolean{
+        return breedsList.contains(breed)
+    }
+    private fun isValidSubBreed(breed: String, subBreed: String) : Boolean{
+        var breedsAndSubBreeds : Map<String, List<String>> = emptyMap()
+        var subBreedsForBreed : List<String> = emptyList()
+        lifecycleScope.launch {
+            breedsAndSubBreeds = dogRepository.getDogBreedsAndSubBreeds()
+        }
+        subBreedsForBreed = breedsAndSubBreeds[breed].orEmpty()
+        return subBreedsForBreed.isEmpty() || subBreedsForBreed.contains(subBreed)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val user = sharedViewModel.getUserData(requireContext())
+        val editTextBreed: AutoCompleteTextView = view.findViewById(R.id.editTextRaza)
+        val editTextSubBreed: AutoCompleteTextView = view.findViewById(R.id.editTextSubRaza)
 
         val usuario = view.findViewById<EditText>(R.id.editTextNombreDueño)
         usuario.hint = user?.username
+
+        lifecycleScope.launch {
+            val breedsAndSubBreeds = dogRepository.getDogBreedsAndSubBreeds()
+
+            // Ahora, breedsAndSubBreeds contiene un mapa con razas y subrazas
+            breedsList = breedsAndSubBreeds.keys.toList() // Lista de razas
+            val subBreedsList = breedsAndSubBreeds.values.flatten() // Lista de subrazas
+            val breedsAdapter = ArrayAdapter(requireContext(),android.R.layout.simple_dropdown_item_1line, breedsList)
+            editTextBreed.setAdapter(breedsAdapter)
+
+            editTextBreed.setOnItemClickListener { _, _, position, _ ->
+                selectedBreed = breedsAdapter.getItem(position).toString()
+                if (selectedBreed != null) {
+                    val subBreedsForSelectedBreed = breedsAndSubBreeds[selectedBreed]
+                    val subBreedsAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, subBreedsForSelectedBreed.orEmpty())
+                    editTextSubBreed.setAdapter(subBreedsAdapter)
+                    editTextSubBreed.isEnabled = subBreedsForSelectedBreed?.isNotEmpty() == true
+                }
+            }
+        }
 
 
         val btnPostDog: Button = view.findViewById(R.id.btnPostDog)
         btnPostDog.setOnClickListener {
 
             val gender: String? = null
-            val editTextBreed: EditText = view.findViewById(R.id.editTextRaza)
-            val editTextSubBreed: EditText = view.findViewById(R.id.editTextSubRaza)
             val editTextAge: EditText = view.findViewById(R.id.editTextEdad)
             val stringAge: String = editTextAge.text.toString()
             val editTextWeight: EditText = view.findViewById(R.id.editTextPeso)
@@ -66,6 +103,7 @@ class Publicacion : Fragment() {
             val editTextOwnerContact: EditText = view.findViewById(R.id.editTextContactoDueño)
             val radioGroup: RadioGroup = view.findViewById(R.id.radioGroupGenero)
             val selectRadioButton: RadioButton = view.findViewById(radioGroup.checkedRadioButtonId)
+
 
             // Verifica si se seleccionó un RadioButton
             if (selectRadioButton != null) {
@@ -87,26 +125,30 @@ class Publicacion : Fragment() {
                 ) {
                     Toast.makeText(requireContext(), "Completa todos los campos", Toast.LENGTH_SHORT).show()
                 } else {
-                    val user = sharedViewModel.getUserData(requireContext())
-                    if(user!=null){
-                        lifecycleScope.launch {
-                            var age: Int = stringAge.toInt()
-                            if (dogRepository.createNewDog(
-                                editTextName.text.toString(),
-                                editTextBreed.text.toString(),
-                                editTextSubBreed.text.toString(),
-                                gender,
-                                weightString.toDouble(),
-                                editTextLocation.text.toString(),
-                                editTextDescription.text.toString(),
-                                user.id,
-                                age
-                            )){
-                                Toast.makeText(requireContext(), "Perro agregado con éxito", Toast.LENGTH_SHORT).show()
-                            } else {
-                                Toast.makeText(requireContext(), "Hubo un error al cargar el perro", Toast.LENGTH_SHORT).show()
+                    if (isValidBreed(editTextBreed.text.toString()) && isValidSubBreed(selectedBreed.orEmpty(), editTextSubBreed.text.toString())) {
+                        val user = sharedViewModel.getUserData(requireContext())
+                        if(user!=null){
+                            lifecycleScope.launch {
+                                var age: Int = stringAge.toInt()
+                                if (dogRepository.createNewDog(
+                                        editTextName.text.toString(),
+                                        editTextBreed.text.toString(),
+                                        editTextSubBreed.text.toString(),
+                                        gender,
+                                        weightString.toDouble(),
+                                        editTextLocation.text.toString(),
+                                        editTextDescription.text.toString(),
+                                        user.id,
+                                        age
+                                    )){
+                                    Toast.makeText(requireContext(), "Perro agregado con éxito", Toast.LENGTH_SHORT).show()
+                                } else {
+                                    Toast.makeText(requireContext(), "Hubo un error al cargar el perro", Toast.LENGTH_SHORT).show()
+                                }
                             }
                         }
+                    }else{
+                        Toast.makeText(requireContext(), "Hubo un error al cargar el perro", Toast.LENGTH_SHORT).show()
                     }
                 }
             }

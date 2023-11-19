@@ -67,7 +67,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageViewFotoPerrito" />
 
-                <EditText
+                <AutoCompleteTextView
                     android:id="@+id/editTextRaza"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
@@ -84,7 +84,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/buttonAgregarFotos" />
 
-                <EditText
+
+                <AutoCompleteTextView
                     android:id="@+id/editTextSubRaza"
                     android:layout_width="0dp"
                     android:layout_height="45dp"

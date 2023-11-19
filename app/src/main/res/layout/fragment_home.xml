@@ -40,13 +40,6 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <!--  <androidx.appcompat.widget.SearchView
-                      android:id="@+id/SearchBreed"
-                      android:layout_width="match_parent"
-                      android:background="@android:color/transparent"
-                      android:iconifiedByDefault="false"
-                      android:layout_height="wrap_content" />-->
             </androidx.cardview.widget.CardView>
             <Button
                 android:id="@+id/buttonSearch"

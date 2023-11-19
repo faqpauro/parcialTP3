@@ -1,102 +1,102 @@
 package com.example.parcialtp3.repository
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.parcialtp3.ApiInterface.DogCeoApi
 import com.example.parcialtp3.entities.Filter
 import com.example.parcialtp3.database.AppDatabase
+import com.example.parcialtp3.database.UserFavoriteDao
 import com.example.parcialtp3.database.dogDao
 import com.example.parcialtp3.entities.Dog
+import com.example.parcialtp3.entities.UserFavorite
 import javax.inject.Inject
+import kotlin.math.absoluteValue
 
 class DogRepository @Inject constructor(
     val apiService : DogCeoApi,
     private val appDatabase: AppDatabase
 ) {
     private val dogDao: dogDao = appDatabase.dogDao()
+    private val userFavoriteDao: UserFavoriteDao = appDatabase.UserFavoriteDao()
 
     private val breedList: MutableList<Filter> = mutableListOf()
+
 
     fun createNewDog( name : String, breed : String, subBreed : String,
                       gender : String, weight : Double, location : String,
                       description : String, owner_id : Int, age : Int) : Boolean {
 
-        val cargado = dogDao.createNewDog(
-            Dog(
-                0,
-                name,
-                breed,
-                subBreed,
-                "https://images.dog.ceo/breeds/dingo/n02115641_1228.jpg",
-                gender,
-                weight,
-                location,
-                description,
-                owner_id,
-                age
+        var cargado : Long = -1
+        val existingDog = dogDao.getAllDogs().find {
+            it.name == name &&
+                    it.breed == breed &&
+                    it.subBreed == subBreed &&
+                    it.gender == gender &&
+                    it.weight == weight &&
+                    it.location == location &&
+                    it.description == description &&
+                    it.owner_id == owner_id &&
+                    it.age == age
+        }
+
+        if(existingDog == null){
+            cargado = dogDao.createNewDog(
+                Dog(
+                    0,
+                    name,
+                    breed,
+                    subBreed,
+                    "https://images.dog.ceo/breeds/dingo/n02115641_1228.jpg",
+                    gender,
+                    weight,
+                    location,
+                    description,
+                    owner_id,
+                    age
+                )
             )
-        )
+        }
+
+
         return cargado > 0
     }
     fun createDogs(){
+        val dog1 = Dog(0, "Florencia", "Dingo", "", "https://images.dog.ceo/breeds/dingo/n02115641_1228.jpg", "Femenino", 10.0, "Buenos Aires", "Raza : Dingo", 1, 5)
+        val dog2 = Dog(0, "Ramon", "Mastiff", "Tibetan", "https://images.dog.ceo/breeds/mastiff-tibetan/n02108551_660.jpg", "Masculino", 7.0, "Formosa", "Raza : Mastiff - Tibetan", 2, 5)
+        val dog3 = Dog(0, "Leonarda", "Ovcharka", "Caucasian", "https://images.dog.ceo/breeds/ovcharka-caucasian/IMG_20190826_112025.jpg", "Femenino", 6.5, "Chubut", "Raza : Ovcharka - Caucasian", 3, 7)
+        val dog4 = Dog(0, "Bobby", "Boxer", "", "https://images.dog.ceo/breeds/boxer/n02108089_6295.jpg", "Femenino", 6.5, "Chubut", "Raza : Boxer", 4, 9)
 
-        dogDao.createNewDog(
-            Dog(
-                0,
-                "Florencia", "Dingo",
-                "",
-                "https://images.dog.ceo/breeds/dingo/n02115641_1228.jpg",
-                "Femenino",
-                10.0,
-                "Buenos Aires",
-                "Raza : Dingo",
-                1,
-                5
-            )
-        )
+        val existingDog = findExistingDog(dog1)
+        val existingDog2 = findExistingDog(dog2)
+        val existingDog3 = findExistingDog(dog3)
+        val existingDog4 = findExistingDog(dog4)
 
-        dogDao.createNewDog(
-            Dog(
-                0,
-                "Ramon", "Mastiff",
-                "Tibetan",
-                "https://images.dog.ceo/breeds/mastiff-tibetan/n02108551_660.jpg",
-                "Maculino",
-                7.0,
-                "Formosa",
-                "Raza : Mastiff - Tibetan",
-                2,
-                5
-            )
-        )
+        if(existingDog == null || existingDog2 == null || existingDog3 == null || existingDog4 == null){
+            dogDao.createNewDog(dog1)
+            dogDao.createNewDog(dog2)
+            dogDao.createNewDog(dog3)
+            dogDao.createNewDog(dog4)
+        }
 
-        dogDao.createNewDog(
-            Dog(
-                0,
-                "Leonarda", "Ovcharka",
-                "Caucasian",
-                "https://images.dog.ceo/breeds/ovcharka-caucasian/IMG_20190826_112025.jpg",
-                "Femenino",
-                6.5,
-                "Chubut",
-                "Raza : Ovcharka - Caucasian",
-                3,
-                7
-            )
-        )
+    }
+    private fun findExistingDog(newDog: Dog): Dog? {
+        var listaDog = dogDao.getAllDogs()
 
-        dogDao.createNewDog(
-            Dog(
-                0,
-                "Bobby", "Boxer",
-                "",
-                "https://images.dog.ceo/breeds/boxer/n02108089_6295.jpg",
-                "Femenino",
-                6.5,
-                "Chubut",
-                "Raza : Boxer",
-                4,
-                9
-            )
-        )
+        return dogDao.getAllDogs().find {
+            it.name == newDog.name &&
+                    it.breed == newDog.breed &&
+                    it.subBreed == newDog.subBreed &&
+                    it.gender == newDog.gender &&
+                    isApproximatelyEqual(it.weight, newDog.weight) &&
+                    it.location == newDog.location &&
+                    it.description == newDog.description &&
+                    it.owner_id == newDog.owner_id &&
+                    it.age == newDog.age
+        }
+    }
+
+    private fun isApproximatelyEqual(value1: Double, value2: Double, tolerance: Double = 0.0001): Boolean {
+        return (value1 - value2).absoluteValue < tolerance
     }
 
     fun getAllDogs(): List<Dog> {
@@ -122,6 +122,50 @@ class DogRepository @Inject constructor(
         }
         return breedList
     }
+
+    fun getFavoriteDogs(userId: Int): List<Dog> {
+        val favoriteDogs = mutableListOf<Dog>()
+        val userFavorites = userFavoriteDao.getUserFavoritesByUserId(userId)
+        for (userFavorite in userFavorites) {
+            val dog = dogDao.getDogById(userFavorite.dogId)
+            if (dog != null) {
+                favoriteDogs.add(dog)
+            }
+        }
+        return favoriteDogs
+    }
+
+    fun getUserFavorite(dogId: Int, userId: Int): UserFavorite? {
+        return userFavoriteDao.getFavorite(userId, dogId)
+    }
+
+    fun getDogById(dogId: Int): Dog {
+        return dogDao.getDogById(dogId)
+    }
+
+    fun isFavorite(userId: Int, dogId: Int): Boolean {
+        return getFavoriteDogs(userId).any { it?.id == dogId }
+    }
+
+    fun deleteFavorite(userFavorite: UserFavorite) {
+        userFavoriteDao.deleteFavorite(userFavorite)
+    }
+
+    fun createNewFavorite(userFavorite: UserFavorite) {
+        userFavoriteDao.registerNewFavorite(userFavorite)
+    }
+
+    suspend fun getDogBreedsAndSubBreeds() : Map<String, List<String>>{
+        try{
+            val response = apiService.getDogBreedsAndSubBreeds()
+            if(response.isSuccessful){
+                val breedsAndSubBreedsResponse = response.body()
+                return breedsAndSubBreedsResponse?.breedsAndSubBreeds ?: emptyMap()
+            }
+        }catch (e: Exception){ }
+        return emptyMap()
+    }
+
 }
 
 

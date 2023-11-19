@@ -14,7 +14,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object ApiBuilder {
 
-    private val URL_BASE_API  = "https://dog.ceo/api/breed/"
+    private val URL_BASE_API  = "https://dog.ceo/api/breeds/"
 
     @Singleton
     @Provides
