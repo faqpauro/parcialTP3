@@ -1,14 +1,16 @@
 package com.example.parcialtp3.repository
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.parcialtp3.ApiInterface.DogCeoApi
-import com.example.parcialtp3.entities.Filter
 import com.example.parcialtp3.database.AppDatabase
 import com.example.parcialtp3.database.UserFavoriteDao
 import com.example.parcialtp3.database.dogDao
 import com.example.parcialtp3.entities.Dog
+import com.example.parcialtp3.entities.Filter
 import com.example.parcialtp3.entities.UserFavorite
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import javax.inject.Inject
 import kotlin.math.absoluteValue
 
@@ -22,7 +24,7 @@ class DogRepository @Inject constructor(
     private val breedList: MutableList<Filter> = mutableListOf()
 
 
-    fun createNewDog( name : String, breed : String, subBreed : String,
+    suspend fun createNewDog( name : String, breed : String, subBreed : String,
                       gender : String, weight : Double, location : String,
                       description : String, owner_id : Int, age : Int) : Boolean {
 
@@ -40,13 +42,14 @@ class DogRepository @Inject constructor(
         }
 
         if(existingDog == null){
+            val imageUrl = getDogImageUrl(breed, subBreed)
             cargado = dogDao.createNewDog(
                 Dog(
                     0,
                     name,
                     breed,
                     subBreed,
-                    "https://images.dog.ceo/breeds/dingo/n02115641_1228.jpg",
+                    imageUrl,
                     gender,
                     weight,
                     location,
@@ -164,6 +167,55 @@ class DogRepository @Inject constructor(
             }
         }catch (e: Exception){ }
         return emptyMap()
+    }
+
+    private suspend fun getDogImageUrl(breed: String, subBreed: String): String {
+        return try {
+            val response = if (subBreed.isNotEmpty()) {
+                apiService.getDogImageByBreed(breed, subBreed)
+            } else {
+                apiService.getDogImageByBreed(breed)
+            }
+
+            if (!response.isSuccessful || response.body()?.status != "success") {
+                return getFallbackImageUrl()
+            }
+
+            val imageUrl = response.body()?.message.orEmpty()
+            if (isValidImageUrl(imageUrl)) return imageUrl
+
+            getFallbackImageUrl()
+        } catch (e: Exception) {
+            getFallbackImageUrl()
+        }
+    }
+
+    private suspend fun getFallbackImageUrl(): String {
+        val response = apiService.getRandomDogImage()
+        return if (response.isSuccessful && response.body()?.status == "success" && isValidImageUrl(response.body()?.message.orEmpty())) {
+            response.body()?.message.orEmpty()
+        } else {
+            "https://images.dog.ceo/breeds/bluetick/n02088632_3230.jpg" //imagen por defecto por si no encuentra imagen o da error
+        }
+    }
+
+    private suspend fun isValidImageUrl(url: String): Boolean {
+        return withContext(Dispatchers.IO) { // Ejecuta en el hilo de I/O
+            try {
+                val client = OkHttpClient()
+                val request = Request.Builder().url(url).head().build()
+                client.newCall(request).execute().use { response ->
+                    response.isSuccessful && isImageContentType(response)
+                }
+            } catch (e: Exception) {
+                false
+            }
+        }
+    }
+
+    private fun isImageContentType(response: okhttp3.Response): Boolean {
+        val contentType = response.header("Content-Type")
+        return contentType != null && contentType.startsWith("image/")
     }
 
 }
