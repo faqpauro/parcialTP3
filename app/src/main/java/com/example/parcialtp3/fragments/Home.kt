@@ -1,25 +1,24 @@
 package com.example.parcialtp3.fragments
 
-import android.media.Image
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
-import android.widget.ImageView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.parcialtp3.entities.Filter
 import com.example.parcialtp3.R
 import com.example.parcialtp3.adapters.DogAdapter
 import com.example.parcialtp3.adapters.FilterAdapter
 import com.example.parcialtp3.entities.Dog
-import com.example.parcialtp3.entities.UserFavorite
+import com.example.parcialtp3.entities.Filter
 import com.example.parcialtp3.repository.DogRepository
+import com.example.parcialtp3.viewmodels.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -34,8 +33,8 @@ class Home : Fragment() {
     private lateinit var filterAdapter: FilterAdapter
     private lateinit var dogList : List<Dog>
     private lateinit var filterList : List<Filter>
-    private var userId:Int = -1
-    private var dogId: Int = -1
+    private val sharedViewModel : SharedViewModel by viewModels()
+
 
 
     override fun onCreateView(
@@ -70,9 +69,9 @@ class Home : Fragment() {
         val dogRecyclerView: RecyclerView = view.findViewById(R.id.dog_recycler_view)
         val dogLayoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL,false)
         dogRecyclerView.layoutManager = dogLayoutManager
-        dogAdapter = DogAdapter(requireContext(), mutableListOf())
+        dogAdapter = DogAdapter(requireContext(), mutableListOf(), dogRepository, sharedViewModel)
         dogRecyclerView.adapter = dogAdapter
-        dogRepository.clearAllData()
+        //dogRepository.clearAllData()
         dogRepository.createDogs()
 
         dogAdapter.setOnItemClickListener(object : DogAdapter.OnItemClickListener{
@@ -85,12 +84,6 @@ class Home : Fragment() {
            dogList = dogRepository.getAllDogs()
             dogAdapter.setDogs(dogList)
         }
-
-        /*   favoriteMark.setOnClickListener{
-               if(userId!=-1 && dogId != -1){
-                   val userFavorite = UserFavorite(0, userId, dogId)
-               }
-           }*/
 
         //FILTRO RECYCLE VIEW
         val filterRecyclerView: RecyclerView = view.findViewById(R.id.recycle_filter)
@@ -107,7 +100,8 @@ class Home : Fragment() {
         })
 
         lifecycleScope.launch {
-            filterList = dogRepository.getBreedList()
+            val allFilter = Filter(title = "Todos")
+            filterList = listOf(allFilter) + dogRepository.getBreedList()
             filterAdapter.setFilters(filterList)
         }
 
@@ -117,11 +111,17 @@ class Home : Fragment() {
         //NAVEGAR A PERRO SOLO
     }
     fun handleFilterClick(filter: Filter){
-        var filterDogs = dogList.filter{it.breed == breedFilter}
-        if(filterDogs.isEmpty()){
-            filterDogs = dogList.filter{it.subBreed == breedFilter}
+        if (filter.title == "Todos") {
+            // Mostrar todos los perros
+            dogAdapter.setDogs(dogList)
+        } else {
+            // filtra por raza
+            var filterDogs = dogList.filter { it.breed == breedFilter }
+            if (filterDogs.isEmpty()) {
+                filterDogs = dogList.filter { it.subBreed == breedFilter }
+            }
+            dogAdapter.setDogs(filterDogs)
         }
-        dogAdapter.setDogs(filterDogs)
 
     }
 
