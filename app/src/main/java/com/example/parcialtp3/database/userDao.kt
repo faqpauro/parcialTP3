@@ -19,5 +19,8 @@ interface userDao {
     fun updateUserDarkModeSelection(newValue: Boolean, id: Int)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertUser(user: User)
+    fun insertUser(user: User): Long
+
+    @Query("UPDATE user SET avatar_url = :avatar_url WHERE id = :id")
+    fun updateUserAvatar(avatar_url: String, id: Int?):Int
 }

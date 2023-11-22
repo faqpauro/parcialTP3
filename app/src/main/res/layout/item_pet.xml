@@ -20,6 +20,18 @@
         android:layout_height="match_parent"
         android:padding="15dp">
 
+
+        <ImageView
+            android:contentDescription="icono"
+            android:id="@+id/favorite"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/favorite_mark"
+            app:tint="@color/white"
+            android:clickable="true"/>
+
         <TextView
             android:id="@+id/pet_name"
             android:layout_width="wrap_content"

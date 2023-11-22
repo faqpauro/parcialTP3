@@ -2,9 +2,10 @@ package com.example.parcialtp3.DataModels
 
 import com.google.gson.annotations.SerializedName
 
-data class DogResponse (
+data class DogBreedsAndSubBreedsResponse(
+
     @SerializedName("message")
-    val message: String,
+    val breedsAndSubBreeds: Map<String, List<String>>,
     @SerializedName("status")
     val status: String
 )

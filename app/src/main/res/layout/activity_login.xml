@@ -47,7 +47,7 @@
                 android:background="@drawable/radius"
                 android:backgroundTint="#DCDCDC"
                 android:fontFamily="@font/quicksand"
-                android:hint="Correo"
+                android:hint="Usuario"
                 android:importantForAutofill="no"
                 android:inputType="text|textEmailAddress"
                 android:textAlignment="center"
