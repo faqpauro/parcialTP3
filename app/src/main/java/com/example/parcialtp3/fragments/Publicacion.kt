@@ -23,6 +23,7 @@ import com.example.parcialtp3.viewmodels.SharedViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -52,13 +53,11 @@ class Publicacion : Fragment() {
         return breedsList.contains(breed)
     }
     private fun isValidSubBreed(breed: String, subBreed: String) : Boolean{
-        var breedsAndSubBreeds : Map<String, List<String>> = emptyMap()
-        var subBreedsForBreed : List<String> = emptyList()
-        lifecycleScope.launch {
-            breedsAndSubBreeds = dogRepository.getDogBreedsAndSubBreeds()
+        return runBlocking {
+            val breedsAndSubBreeds = dogRepository.getDogBreedsAndSubBreeds()
+            val subBreedsForBreed = breedsAndSubBreeds[breed].orEmpty()
+            subBreedsForBreed.isEmpty() || subBreedsForBreed.contains(subBreed)
         }
-        subBreedsForBreed = breedsAndSubBreeds[breed].orEmpty()
-        return subBreedsForBreed.isEmpty() || subBreedsForBreed.contains(subBreed)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
