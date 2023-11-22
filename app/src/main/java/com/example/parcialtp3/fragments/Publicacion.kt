@@ -95,11 +95,18 @@ class Publicacion : Fragment() {
 
             editTextBreed.setOnItemClickListener { _, _, position, _ ->
                 selectedBreed = breedsAdapter.getItem(position).toString()
-
                 val subBreedsForSelectedBreed = breedsAndSubBreeds[selectedBreed].orEmpty()
-                val newSubBreedsAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, subBreedsForSelectedBreed)
-                editTextSubBreed.setAdapter(newSubBreedsAdapter)
-                editTextSubBreed.isEnabled = subBreedsForSelectedBreed.isNotEmpty()
+
+                if (subBreedsForSelectedBreed.isEmpty()) {
+                    editTextSubBreed.setText("")
+                    editTextSubBreed.isEnabled = false
+                    editTextSubBreed.visibility = View.INVISIBLE // Oculta el campo de subraza
+                } else {
+                    editTextSubBreed.visibility = View.VISIBLE // Muestra el campo de subraza
+                    val newSubBreedsAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, subBreedsForSelectedBreed)
+                    editTextSubBreed.setAdapter(newSubBreedsAdapter)
+                    editTextSubBreed.isEnabled = true
+                }
             }
         }
 
@@ -130,7 +137,6 @@ class Publicacion : Fragment() {
                 }
 
                 if (editTextBreed.text.toString().isEmpty()
-                    || editTextSubBreed.text.toString().isEmpty()
                     || editTextAge.text.isEmpty()
                     || editTextWeight.text.isEmpty()
                     || editTextName.text.isEmpty()
@@ -169,12 +175,12 @@ class Publicacion : Fragment() {
 
                                     }, Toast.LENGTH_SHORT.toLong())
                                 } else {
-                                    Toast.makeText(requireContext(), "Hubo un error al cargar el perro", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(requireContext(), "Raza o subraza inválida", Toast.LENGTH_SHORT).show()
                                 }
                             }
                         }
                     }else{
-                        Toast.makeText(requireContext(), "Hubo un error al cargar el perro", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Raza o subraza inválida", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
