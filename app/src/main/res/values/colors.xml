@@ -7,5 +7,6 @@
     <color name="accent">#B88B4A</color>
     <color name="button_main_color">#827397</color>
     <color name="button_perfil_color">#3D405B</color>
+    <color name="button_buscar_color">#827397</color>
 
 </resources>
