@@ -23,6 +23,7 @@ import com.example.parcialtp3.viewmodels.SharedViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -52,13 +53,11 @@ class Publicacion : Fragment() {
         return breedsList.contains(breed)
     }
     private fun isValidSubBreed(breed: String, subBreed: String) : Boolean{
-        var breedsAndSubBreeds : Map<String, List<String>> = emptyMap()
-        var subBreedsForBreed : List<String> = emptyList()
-        lifecycleScope.launch {
-            breedsAndSubBreeds = dogRepository.getDogBreedsAndSubBreeds()
+        return runBlocking {
+            val breedsAndSubBreeds = dogRepository.getDogBreedsAndSubBreeds()
+            val subBreedsForBreed = breedsAndSubBreeds[breed].orEmpty()
+            subBreedsForBreed.isEmpty() || subBreedsForBreed.contains(subBreed)
         }
-        subBreedsForBreed = breedsAndSubBreeds[breed].orEmpty()
-        return subBreedsForBreed.isEmpty() || subBreedsForBreed.contains(subBreed)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -95,11 +94,18 @@ class Publicacion : Fragment() {
 
             editTextBreed.setOnItemClickListener { _, _, position, _ ->
                 selectedBreed = breedsAdapter.getItem(position).toString()
-
                 val subBreedsForSelectedBreed = breedsAndSubBreeds[selectedBreed].orEmpty()
-                val newSubBreedsAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, subBreedsForSelectedBreed)
-                editTextSubBreed.setAdapter(newSubBreedsAdapter)
-                editTextSubBreed.isEnabled = subBreedsForSelectedBreed.isNotEmpty()
+
+                if (subBreedsForSelectedBreed.isEmpty()) {
+                    editTextSubBreed.setText("")
+                    editTextSubBreed.isEnabled = false
+                    editTextSubBreed.visibility = View.INVISIBLE // Oculta el campo de subraza
+                } else {
+                    editTextSubBreed.visibility = View.VISIBLE // Muestra el campo de subraza
+                    val newSubBreedsAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, subBreedsForSelectedBreed)
+                    editTextSubBreed.setAdapter(newSubBreedsAdapter)
+                    editTextSubBreed.isEnabled = true
+                }
             }
         }
 
@@ -130,7 +136,6 @@ class Publicacion : Fragment() {
                 }
 
                 if (editTextBreed.text.toString().isEmpty()
-                    || editTextSubBreed.text.toString().isEmpty()
                     || editTextAge.text.isEmpty()
                     || editTextWeight.text.isEmpty()
                     || editTextName.text.isEmpty()
@@ -169,12 +174,12 @@ class Publicacion : Fragment() {
 
                                     }, Toast.LENGTH_SHORT.toLong())
                                 } else {
-                                    Toast.makeText(requireContext(), "Hubo un error al cargar el perro", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(requireContext(), "Raza o subraza inválida", Toast.LENGTH_SHORT).show()
                                 }
                             }
                         }
                     }else{
-                        Toast.makeText(requireContext(), "Hubo un error al cargar el perro", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Raza o subraza inválida", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
