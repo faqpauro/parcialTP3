@@ -28,4 +28,5 @@ interface dogDao {
     fun deleteAllDogs()
     @Query("SELECT * FROM dog WHERE id = :dogId")
     fun getDogById(dogId: Int): Dog
+
 }

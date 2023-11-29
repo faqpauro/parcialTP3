@@ -123,8 +123,6 @@ class MainActivity2 : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         return true
     }
 
-
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)) {
             return true
