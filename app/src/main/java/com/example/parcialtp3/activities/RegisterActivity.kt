@@ -84,7 +84,7 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this@RegisterActivity, "Todos los campos deben estar completados", Toast.LENGTH_SHORT).show()
             } else {
                 lifecycleScope.launch {
-                    if(userRepository.registerNewUser(User(0, username, contraseña, email, avatar, darkMode))){
+                    if(userRepository.registerNewUser(User(0, username, contraseña, email, avatar, darkMode, telefono))){
                         // userRepository.registerNewUser(User(0, username, contraseña, email, telefono , avatar, darkMode))
                         Toast.makeText(this@RegisterActivity, "Usuario cargado con éxito", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
