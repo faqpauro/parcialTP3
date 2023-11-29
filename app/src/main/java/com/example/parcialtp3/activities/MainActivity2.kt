@@ -87,6 +87,24 @@ class MainActivity2 : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         }
     }
 
+    override fun onResume(){
+        super.onResume()
+        val navigationView: NavigationView = findViewById(R.id.nav_view2)
+        val headerView = navigationView.getHeaderView(0)
+        val nameUserTextView: TextView = headerView.findViewById(R.id.nombre_usuario)
+        val imagePerfil: ImageView = headerView.findViewById(R.id.nav_header_imageView)
+        val user = sharedViewModel.getUserData(this)
+        if(user!=null){
+            nameUserTextView.text = user.username
+            if (user.avatar_url != null) {
+                Glide.with(this) // Contexto
+                    .load(user.avatar_url) // URL de la imagen
+                    .circleCrop() // Esta línea hace el recorte circular
+                    .into(imagePerfil) // ImageView donde se cargará la imagen
+            }
+        }
+    }
+
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
         toggle.syncState()
@@ -122,8 +140,6 @@ class MainActivity2 : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
-
-
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)) {

@@ -1,5 +1,6 @@
 package com.example.parcialtp3.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parcialtp3.R
+import com.example.parcialtp3.activities.LoginActivity
+import com.example.parcialtp3.activities.PerroActivity
 import com.example.parcialtp3.adapters.DogAdapter
 import com.example.parcialtp3.adapters.FilterAdapter
 import com.example.parcialtp3.entities.Dog
@@ -107,8 +110,8 @@ class Home : Fragment() {
 
     }
     fun handleDogClick(dog: Dog){
-        //dogViewModel.setFilter(dog.breed)
-        //NAVEGAR A PERRO SOLO
+        val intent = Intent(requireActivity(), PerroActivity::class.java)
+        startActivity(intent)
     }
     fun handleFilterClick(filter: Filter){
         if (filter.title == "Todos") {

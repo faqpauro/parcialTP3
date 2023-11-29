@@ -34,9 +34,6 @@ class Publicacion : Fragment() {
     lateinit var breedsList : List<String>
     lateinit var selectedBreed : String
 
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }

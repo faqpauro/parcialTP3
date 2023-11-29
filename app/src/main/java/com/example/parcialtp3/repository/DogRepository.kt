@@ -213,6 +213,7 @@ class DogRepository @Inject constructor(
         }
     }
 
+
     private fun isImageContentType(response: okhttp3.Response): Boolean {
         val contentType = response.header("Content-Type")
         return contentType != null && contentType.startsWith("image/")

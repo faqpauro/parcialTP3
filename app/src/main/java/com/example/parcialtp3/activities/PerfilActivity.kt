@@ -100,7 +100,7 @@ class PerfilActivity : AppCompatActivity() {
                             Toast.makeText(this@PerfilActivity, "Imagen actualizada con éxito", Toast.LENGTH_SHORT).show()
                             // actualizar usuario del viewmodel
                             if (user != null) {
-                                sharedViewModel.setUserData(this@PerfilActivity, user)
+                                sharedViewModel.setUserData(this@PerfilActivity, user.copy(avatar_url = imageUrl))
                             }
                         } else {
                             Toast.makeText(this@PerfilActivity, "Ocurrió un error al actualizar la imagen", Toast.LENGTH_SHORT).show()
