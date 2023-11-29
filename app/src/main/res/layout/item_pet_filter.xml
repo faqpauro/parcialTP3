@@ -14,11 +14,11 @@
         android:padding="6dp">
 
         <ImageView
-            android:contentDescription="icono filtro"
             android:id="@+id/filter_icon"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignBottom="@+id/filtro_title"
+            android:contentDescription="icono filtro"
             android:src="@drawable/huellas" />
 
 
@@ -26,8 +26,8 @@
             android:id="@+id/filtro_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand"
             android:layout_toEndOf="@+id/filter_icon"
+            android:fontFamily="@font/quicksand"
             android:text="filtroRaza"
             android:textColor="@android:color/black"
             android:textSize="15dp"

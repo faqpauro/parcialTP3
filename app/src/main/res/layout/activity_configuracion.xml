@@ -27,6 +27,7 @@
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
+          android:fontFamily="@font/roboto_medium"
           android:paddingBottom="8dp"
           android:text="Generales"
           android:textColor="#1B72C0"
@@ -39,11 +40,14 @@
           android:orientation="horizontal"
           android:paddingVertical="8dp">
 
+
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="332dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Modo Oscuro" />
+            android:fontFamily="@font/quicksand_regular"
+            android:text="Modo Oscuro"
+            android:textColor="#001E2F" />
 
         <Switch
             android:id="@+id/darkModeSwitch"
