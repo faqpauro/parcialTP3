@@ -1,5 +1,7 @@
 package com.example.parcialtp3.activities
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -32,6 +34,7 @@ class PerroActivity : AppCompatActivity() {
         var nameOwner : TextView = findViewById(R.id.nombre_duenio_text)
         var avatarOwner : ImageView = findViewById(R.id.imageView4)
         var descDog : TextView = findViewById(R.id.textView13)
+        var botonTelefono = findViewById<ImageView>(R.id.imageView5)
 
         val dogId = intent.getIntExtra("dogId", -1)
 
@@ -57,6 +60,13 @@ class PerroActivity : AppCompatActivity() {
                 .load(user.avatar_url)
                 .apply(requestOptions)
                 .into(avatarOwner)
+
+            botonTelefono.setOnClickListener{
+                val intent = Intent(Intent.ACTION_DIAL)
+                intent.data = Uri.parse("tel:+1234")
+                startActivity(intent)
+            }
+
         }
     }
 
