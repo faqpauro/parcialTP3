@@ -14,7 +14,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parcialtp3.R
-import com.example.parcialtp3.activities.LoginActivity
 import com.example.parcialtp3.activities.PerroActivity
 import com.example.parcialtp3.adapters.DogAdapter
 import com.example.parcialtp3.adapters.FilterAdapter
@@ -111,6 +110,7 @@ class Home : Fragment() {
     }
     fun handleDogClick(dog: Dog){
         val intent = Intent(requireActivity(), PerroActivity::class.java)
+        intent.putExtra("dogId" , dog.id)
         startActivity(intent)
     }
     fun handleFilterClick(filter: Filter){

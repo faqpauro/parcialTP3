@@ -23,4 +23,7 @@ interface userDao {
 
     @Query("UPDATE user SET avatar_url = :avatar_url WHERE id = :id")
     fun updateUserAvatar(avatar_url: String, id: Int?):Int
+
+    @Query("SELECT * FROM user WHERE id = :id ")
+    fun getUserById(id: Int?):User
 }

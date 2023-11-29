@@ -24,4 +24,8 @@ class UserRepository @Inject constructor(
         return actualizado > 0 // si es mayor a 0, actualizó
     }
 
+    fun getUserById(ownerId: Int): User {
+        return userDao.getUserById(ownerId)
+    }
+
 }

@@ -38,7 +38,8 @@ class SharedViewModel : ViewModel() {
         if (user.isNullOrEmpty()){
             return null
         }
-
         return Gson().fromJson(user, User::class.java)
     }
+
+
 }
