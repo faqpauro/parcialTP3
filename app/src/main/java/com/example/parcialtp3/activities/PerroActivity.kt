@@ -76,7 +76,7 @@ class PerroActivity : AppCompatActivity() {
 
             botonTelefono.setOnClickListener{
                 val intent = Intent(Intent.ACTION_DIAL)
-                intent.data = Uri.parse("tel:+1234")
+                intent.data = Uri.parse("tel:" + user.phone)
                 startActivity(intent)
             }
 

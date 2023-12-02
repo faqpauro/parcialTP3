@@ -22,15 +22,15 @@
 
 
         <ImageView
-            android:contentDescription="icono"
             android:id="@+id/favorite"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
+            android:clickable="true"
+            android:contentDescription="icono"
             android:src="@drawable/favorite_mark"
-            app:tint="@color/white"
-            android:clickable="true"/>
+            app:tint="@color/white" />
 
         <TextView
             android:id="@+id/pet_name"
@@ -102,21 +102,21 @@
             android:textSize="15sp" />
 
 
-
         <TextView
             android:id="@+id/pet_age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand_light"
-            android:text="edad"
             android:layout_alignParentEnd="true"
-            android:shadowColor="@color/black"
-            android:shadowDx="2"
-            android:shadowDy="2"
-            android:shadowRadius="4"
             android:layout_alignParentBottom="true"
+            android:fontFamily="@font/quicksand_light"
+            android:shadowColor="@color/dark_primary_dark"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="5"
+            android:text="edad"
             android:textColor="@android:color/white"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/pet_gender"
@@ -124,14 +124,15 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="10dp"
-            android:shadowColor="@color/black"
-            android:shadowDx="2"
-            android:shadowDy="2"
-            android:shadowRadius="4"
             android:layout_toStartOf="@+id/pet_age"
             android:fontFamily="@font/quicksand_light"
-            android:text="edad"
+            android:shadowColor="@color/dark_primary_dark"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="5"
+            android:text="sexo"
             android:textColor="@android:color/white"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

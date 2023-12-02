@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#5F5B5B</color>
+    <color name="black">#1E1E1E</color>
     <color name="white">#FFFFFFFF</color>
     <color name="primary">#A27035</color>
     <color name="primarydark">#533E2D</color>
@@ -10,6 +10,6 @@
     <color name="button_buscar_color">#827397</color>
     <color name="dark_primary">#121212</color> <!-- Un gris muy oscuro -->
     <color name="dark_primary_dark">#000000</color> <!-- Negro para el colorPrimaryDark -->
-    <color name="dark_accent">#BB86FC</color> <!-- Un color de acento para el modo oscuro -->
+    <color name="dark_accent">#573D1E</color> <!-- Un color de acento para el modo oscuro -->
 
 </resources>

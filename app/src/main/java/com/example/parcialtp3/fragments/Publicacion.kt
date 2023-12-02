@@ -63,10 +63,16 @@ class Publicacion : Fragment() {
         val editTextBreed: AutoCompleteTextView = view.findViewById(R.id.editTextRaza)
         val editTextSubBreed: AutoCompleteTextView = view.findViewById(R.id.editTextSubRaza)
         val editTextOwnerName: EditText = view.findViewById(R.id.editTextNombreDueño)
+        val editTextPhone: EditText = view.findViewById(R.id.editTextContactoDueño)
 
         user?.username?.let {
             if (it.isNotEmpty()) {
                 editTextOwnerName.setText(it)
+            }
+        }
+        user?.phone?.let {
+            if (it.isNotEmpty()) {
+                editTextPhone.setText(it)
             }
         }
 
@@ -138,7 +144,7 @@ class Publicacion : Fragment() {
                     || editTextName.text.isEmpty()
                     || editTextLocation.text.isEmpty()
                     || editTextDescription.text.isEmpty()
-                    || editTextOwnerContact.text.isEmpty()
+                    || (editTextOwnerContact.text.isEmpty() && user?.phone.isNullOrEmpty())
                     || (editTextOwnerName.text.isEmpty() && user?.username.isNullOrEmpty())
                 ) {
                     Toast.makeText(requireContext(), "Completa todos los campos", Toast.LENGTH_SHORT).show()

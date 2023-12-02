@@ -38,7 +38,6 @@ class ConfiguracionActivity : AppCompatActivity() {
             it.title = "Configuración"
             it.setDisplayHomeAsUpEnabled(true)
         }
-
         darkModeSwitch = findViewById(R.id.darkModeSwitch)
         val isDarkMode = sharedViewModel.getDarkModeState(this)
         darkModeSwitch.isChecked = isDarkMode

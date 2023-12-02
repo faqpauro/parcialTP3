@@ -48,7 +48,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/quicksand_regular"
             android:text="Modo Oscuro"
-            android:textColor="#001E2F" />
+            android:textColor="?android:attr/textColor" />
 
         <Switch
             android:id="@+id/darkModeSwitch"
