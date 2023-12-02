@@ -12,7 +12,6 @@ import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import javax.inject.Inject
-import kotlin.math.absoluteValue
 
 class DogRepository @Inject constructor(
     val apiService : DogCeoApi,
@@ -63,7 +62,7 @@ class DogRepository @Inject constructor(
 
         return cargado > 0
     }
-    fun createDogs(){
+    /*fun createDogs(){
         val dog1 = Dog(0, "Florencia", "Dingo", "", "https://images.dog.ceo/breeds/dingo/n02115641_1228.jpg", "Femenino", 10.0, "Buenos Aires", "Raza : Dingo", 1, 5)
         val dog2 = Dog(0, "Ramon", "Mastiff", "Tibetan", "https://images.dog.ceo/breeds/mastiff-tibetan/n02108551_660.jpg", "Masculino", 7.0, "Formosa", "Raza : Mastiff - Tibetan", 2, 5)
         val dog3 = Dog(0, "Leonarda", "Ovcharka", "Caucasian", "https://images.dog.ceo/breeds/ovcharka-caucasian/IMG_20190826_112025.jpg", "Femenino", 6.5, "Chubut", "Raza : Ovcharka - Caucasian", 3, 7)
@@ -100,7 +99,7 @@ class DogRepository @Inject constructor(
 
     private fun isApproximatelyEqual(value1: Double, value2: Double, tolerance: Double = 0.0001): Boolean {
         return (value1 - value2).absoluteValue < tolerance
-    }
+    }*/
 
     fun getAllDogs(): List<Dog> {
         return dogDao.getAllDogs()

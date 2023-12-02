@@ -1,8 +1,6 @@
 package com.example.parcialtp3.viewmodels
 
 import android.content.Context
-import androidx.core.content.edit
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.parcialtp3.entities.User
@@ -24,7 +22,7 @@ class SharedViewModel : ViewModel() {
         return sharedPreferences.getBoolean("darkMode", false)
     }
 
-    fun setUserData(context: Context, user: User){
+    fun setUserData(context: Context, user: User?){
         val sharedPreferences = context.getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putString("user", Gson().toJson(user))

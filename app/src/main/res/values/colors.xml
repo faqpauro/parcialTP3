@@ -8,5 +8,8 @@
     <color name="button_main_color">#827397</color>
     <color name="button_perfil_color">#3D405B</color>
     <color name="button_buscar_color">#827397</color>
+    <color name="dark_primary">#121212</color> <!-- Un gris muy oscuro -->
+    <color name="dark_primary_dark">#000000</color> <!-- Negro para el colorPrimaryDark -->
+    <color name="dark_accent">#BB86FC</color> <!-- Un color de acento para el modo oscuro -->
 
 </resources>

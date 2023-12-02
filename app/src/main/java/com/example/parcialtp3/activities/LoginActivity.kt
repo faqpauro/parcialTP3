@@ -3,13 +3,11 @@ package com.example.parcialtp3.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import com.example.parcialtp3.R
 import com.example.parcialtp3.repository.UserRepository
@@ -28,12 +26,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        val isDarkMode = sharedViewModel.getDarkModeState(this)
-        if (isDarkMode) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
         val textViewRegister = findViewById<TextView>(R.id.textViewRegister)
 
         textViewRegister.setOnClickListener {
@@ -54,6 +46,7 @@ class LoginActivity : AppCompatActivity() {
                     val userExists = userRepository.checkCredentials(usuarioLogin, contraseñaLogin)
                     if(userExists != null){
                         sharedViewModel.setUserData(this@LoginActivity, userExists)
+                        sharedViewModel.saveDarkModeState(this@LoginActivity, sharedViewModel.getUserData(this@LoginActivity)?.darkModeSelection ?: false)
                         val intent = Intent(this@LoginActivity, MainActivity2::class.java)
                         startActivity(intent)
                     } else {

@@ -24,6 +24,12 @@ class UserRepository @Inject constructor(
         return actualizado > 0 // si es mayor a 0, actualizó
     }
 
+    suspend fun updateUserDarkMode(darkMode: Boolean, id: Int?) {
+        if (id != null) {
+            userDao.updateUserDarkModeSelection(darkMode, id)
+        }
+    }
+
     fun getUserById(ownerId: Int): User {
         return userDao.getUserById(ownerId)
     }

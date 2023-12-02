@@ -10,6 +10,10 @@
                     android:id="@+id/configuracion"
                     android:icon="@drawable/configuracion"
                     android:title="@string/configuracion" />
+                <item
+                    android:id="@+id/cerrar_sesion"
+                    android:icon="@drawable/cerrar_sesion"
+                    android:title="Cerrar Sesión" />
         </group>
 
 

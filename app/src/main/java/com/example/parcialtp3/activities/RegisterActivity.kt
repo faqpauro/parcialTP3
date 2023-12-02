@@ -1,18 +1,15 @@
 package com.example.parcialtp3.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.parcialtp3.R
-import com.example.parcialtp3.database.AppDatabase
-import com.example.parcialtp3.database.userDao
 import com.example.parcialtp3.entities.User
 import com.example.parcialtp3.repository.UserRepository
 import com.example.parcialtp3.viewmodels.SharedViewModel
@@ -50,25 +47,11 @@ class RegisterActivity : AppCompatActivity() {
         darkModeInput = findViewById(R.id.darkMSwitchRegister)
         avatar = findViewById(R.id.avatar)
 
-        darkModeInput.isChecked = sharedViewModel.getDarkModeState(this)
-        updateDarkModeState(darkModeInput.isChecked)
-    }
-
-    private fun updateDarkModeState(isDarkMode: Boolean) {
-        if (isDarkMode) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
     }
 
 
     override fun onStart() {
         super.onStart()
-        darkModeInput.setOnCheckedChangeListener {_, isChecked ->
-            sharedViewModel.saveDarkModeState(this, isChecked)
-            updateDarkModeState(isChecked)
-        }
 
 
         registerButton.setOnClickListener{

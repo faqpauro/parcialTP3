@@ -74,7 +74,6 @@ class Home : Fragment() {
         dogAdapter = DogAdapter(requireContext(), mutableListOf(), dogRepository, sharedViewModel)
         dogRecyclerView.adapter = dogAdapter
         //dogRepository.clearAllData()
-        dogRepository.createDogs()
 
         dogAdapter.setOnItemClickListener(object : DogAdapter.OnItemClickListener{
             override fun onItemClick(dog: Dog) {

@@ -29,6 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
         android:orientation="vertical">
 
         <androidx.fragment.app.FragmentContainerView
@@ -42,14 +43,13 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:navGraph="@navigation/navgraph"
-            />
+            app:navGraph="@navigation/navgraph" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/nav_view"
-            android:background="@color/accent"
             android:layout_width="match_parent"
             android:layout_height="53dp"
+            android:background="@color/accent"
             app:itemHorizontalTranslationEnabled="true"
             app:labelVisibilityMode="labeled"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -67,9 +67,9 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="?attr/colorPrimary"
         app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/drawer">
-    </com.google.android.material.navigation.NavigationView>
+        app:menu="@menu/drawer"></com.google.android.material.navigation.NavigationView>
 
 
 

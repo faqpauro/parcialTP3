@@ -6,12 +6,11 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.bumptech.glide.Glide
@@ -24,7 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity2 : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
 
-    private val sharedViewModel: SharedViewModel by viewModels()
+    private lateinit var sharedViewModel: SharedViewModel
 
     private lateinit var bottomNavView: BottomNavigationView
     private lateinit var navHostFragment2: NavHostFragment
@@ -33,7 +32,12 @@ class MainActivity2 : AppCompatActivity(), NavigationView.OnNavigationItemSelect
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var nameUser: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
+        sharedViewModel = ViewModelProvider(this)[SharedViewModel::class.java]
+
+        setAppTheme()
+
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main2)
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -78,16 +82,18 @@ class MainActivity2 : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                     .into(imagePerfil) // ImageView donde se cargará la imagen
             }
         }
-
-        val isDarkMode = sharedViewModel.getDarkModeState(this)
-        if (isDarkMode) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
     }
 
     override fun onResume(){
+        if(sharedViewModel.getUserData(this@MainActivity2)?.darkModeSelection != sharedViewModel.getDarkModeState(this@MainActivity2)){
+            setAppTheme()
+            var user = sharedViewModel.getUserData(this)
+            if (user != null) {
+                user.darkModeSelection = sharedViewModel.getDarkModeState(this@MainActivity2)
+                sharedViewModel.setUserData(this, user)
+            }
+            recreate()
+        }
         super.onResume()
         val navigationView: NavigationView = findViewById(R.id.nav_view2)
         val headerView = navigationView.getHeaderView(0)
@@ -135,6 +141,12 @@ class MainActivity2 : AppCompatActivity(), NavigationView.OnNavigationItemSelect
                 val intent = Intent(this, ConfiguracionActivity::class.java)
                 startActivity(intent)
             }
+            R.id.cerrar_sesion -> {
+                sharedViewModel.setUserData(this, null)
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
 
         }
         drawerLayout.closeDrawer(GravityCompat.START)
@@ -147,5 +159,12 @@ class MainActivity2 : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         }
         return super.onOptionsItemSelected(item)
     }
+
+    private fun setAppTheme() {
+        val isDarkMode = sharedViewModel.getDarkModeState(this)
+        setTheme(if (isDarkMode) R.style.Base_Theme_ParcialTP3_Dark else R.style.Base_Theme_ParcialTP3)
+        if(isDarkMode){sharedViewModel.saveDarkModeState(this, true)} else  {sharedViewModel.saveDarkModeState(this, false)}
+    }
+
 
 }

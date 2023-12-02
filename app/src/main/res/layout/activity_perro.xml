@@ -1,259 +1,226 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    android:background="?attr/colorPrimary"
+    tools:context=".activities.PerroActivity">
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="412dp"
-            android:layout_height="375dp"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+    <include
+        android:id="@+id/include"
+        layout="@layout/app_bar_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="409dp"
+        android:layout_height="666dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
-            android:layout_width="409dp"
-            android:layout_height="355dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginEnd="2dp"
-            android:layout_marginBottom="2dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2">
-
-            <TextView
-                android:id="@+id/btn_dog_name"
-                android:layout_width="wrap_content"
-                android:layout_height="27dp"
-                android:layout_marginStart="26dp"
-                android:layout_marginTop="37dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="Nombre"
-                android:textSize="24dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="13dp"
-                android:layout_height="17dp"
-                android:layout_marginStart="29dp"
-                app:layout_constraintEnd_toStartOf="@+id/location_text"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_dog_name"
-                app:srcCompat="@drawable/location" />
-
-            <TextView
-                android:id="@+id/location_text"
-                android:layout_width="wrap_content"
-                android:layout_height="16dp"
-                android:fontFamily="@font/poppins_regular"
-                android:text="Buenos Aires"
-                app:layout_constraintStart_toEndOf="@+id/imageView3"
-                app:layout_constraintTop_toBottomOf="@+id/btn_dog_name" />
-
-            <TextView
-                android:id="@+id/edad_text"
-                android:layout_width="wrap_content"
-                android:layout_height="26dp"
-                android:layout_marginTop="37dp"
-                android:layout_marginStart="170dp"
-                android:fontFamily="@font/poppins_medium"
-                android:text="20"
-                android:textSize="24sp"
-                app:layout_constraintStart_toEndOf="@+id/btn_dog_name"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/años"
-                android:layout_width="wrap_content"
-                android:layout_height="26dp"
-                android:layout_marginTop="37dp"
-                android:layout_marginEnd="20dp"
-                android:fontFamily="@font/poppins_medium"
-                android:text="años"
-                android:textSize="24sp"
+                android:id="@+id/imageView2"
+                android:layout_width="410dp"
+                android:layout_height="306dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout2"
-                android:layout_width="325dp"
-                android:layout_height="66dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="88dp"
-                android:layout_marginEnd="43dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <TextView
-                    android:id="@+id/sex_details"
-                    android:layout_width="wrap_content"
-                    android:layout_height="18dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginEnd="21dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="Male"
-                    android:textAlignment="center"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toStartOf="@+id/sex_details2"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/sex_details2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="18dp"
-                    android:layout_marginStart="21dp"
-                    android:layout_marginTop="13dp"
-                    android:layout_marginBottom="4dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="Male"
-                    android:textAlignment="center"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toTopOf="@+id/dog_sex_text2"
-                    app:layout_constraintStart_toEndOf="@+id/sex_details"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/dog_sex_text"
-                    android:layout_width="17sp"
-                    android:layout_height="12sp"
-                    android:layout_marginStart="22dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Sex"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/sex_details"
-                    app:layout_constraintVertical_bias="1.0" />
-
-                <TextView
-                    android:id="@+id/dog_sex_text2"
-                    android:layout_width="24sp"
-                    android:layout_height="12sp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="8dp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Peso"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/dog_sex_text"
-                    app:layout_constraintTop_toBottomOf="@+id/sex_details2"
-                    app:layout_constraintVertical_bias="1.0" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout3"
-                android:layout_width="325dp"
-                android:layout_height="55dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="43dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
-
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="50dp"
-                    android:layout_height="53dp"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginBottom="1dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/perfi_imagen" />
-
-                <TextView
-                    android:id="@+id/duenio_text"
-                    android:layout_width="33sp"
-                    android:layout_height="15sp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="1dp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Dueño"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toTopOf="@+id/nombre_duenio_text"
-                    app:layout_constraintStart_toEndOf="@+id/imageView4"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/nombre_duenio_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="7dp"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="Nombre del dueño"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageView4"
-                    app:layout_constraintTop_toBottomOf="@+id/duenio_text" />
-
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="35sp"
-                    android:layout_height="35sp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="6dp"
-                    android:layout_marginBottom="10dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/telefono_logo" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <Button
-                android:id="@+id/btn_adoptar"
-                android:layout_width="326dp"
-                android:layout_height="60dp"
-                android:layout_margin="16dp"
-                android:layout_marginStart="42dp"
-                android:layout_marginEnd="67dp"
-                android:layout_marginBottom="4dp"
-                android:background="#827397"
-                android:elevation="6dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="Adoptar"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF"
+                android:id="@+id/constraintLayout"
+                android:layout_width="409dp"
+                android:layout_height="355dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="325dp"
-                android:layout_height="79dp"
-                android:layout_marginTop="3dp"
-                android:fontFamily="@font/poppins_regular"
-                android:text="Descripcion"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView2">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="13dp"
+                    android:layout_height="17dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="2dp"
+                    app:layout_constraintEnd_toStartOf="@+id/location_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_dog_name"
+                    app:srcCompat="@drawable/location" />
+
+                <TextView
+                    android:id="@+id/location_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Buenos Aires"
+                    app:layout_constraintStart_toEndOf="@+id/imageView3"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_dog_name" />
+
+                <TextView
+                    android:id="@+id/btn_dog_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="27dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="36dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Nombre"
+                    android:textSize="24dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/edad_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="132dp"
+                    android:layout_marginTop="36dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="20 años"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.023"
+                    app:layout_constraintStart_toEndOf="@+id/btn_dog_name"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout2"
+                    android:layout_width="325dp"
+                    android:layout_height="66dp"
+                    android:layout_marginTop="88dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/sex_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="16dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Male"
+                        android:textAlignment="center"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toTopOf="@+id/sex_details2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/sex_details2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_marginTop="40dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Male"
+                        android:textAlignment="center"
+                        android:textSize="12sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints"
+                        tools:layout_editor_absoluteX="0dp" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout3"
+                    android:layout_width="325dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="6dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="50dp"
+                        android:layout_height="53dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginBottom="1dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/perfi_imagen" />
+
+                    <TextView
+                        android:id="@+id/duenio_text"
+                        android:layout_width="33sp"
+                        android:layout_height="15sp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="1dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Dueño"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toTopOf="@+id/nombre_duenio_text"
+                        app:layout_constraintStart_toEndOf="@+id/imageView4"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/nombre_duenio_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Nombre del dueño"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView4"
+                        app:layout_constraintTop_toBottomOf="@+id/duenio_text" />
+
+                    <ImageView
+                        android:id="@+id/imageView5"
+                        android:layout_width="35sp"
+                        android:layout_height="35sp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="6dp"
+                        android:layout_marginBottom="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/telefono_logo" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <Button
+                    android:id="@+id/btn_adoptar"
+                    android:layout_width="328dp"
+                    android:layout_height="46dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="#827397"
+                    android:elevation="6dp"
+                    android:text="Adoptar"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="327dp"
+                    android:layout_height="59dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Descripcion"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

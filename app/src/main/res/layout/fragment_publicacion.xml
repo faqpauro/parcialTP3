@@ -12,18 +12,19 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card"
-            android:layout_width="350dp"
-            android:layout_height="match_parent"
+            android:layout_width="349dp"
+            android:layout_height="655dp"
+            android:layout_marginBottom="20dp"
+            app:cardBackgroundColor="?attr/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
 
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="655dp"
                 android:paddingLeft="40dp"
                 android:paddingTop="10dp"
                 android:paddingRight="40dp"
@@ -54,43 +55,13 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-                <Button
-                    android:id="@+id/buttonAgregarFotos"
-                    android:layout_width="206dp"
-                    android:layout_height="48dp"
-                    android:layout_marginBottom="20dp"
-                    android:background="@drawable/radius_button"
-                    android:fontFamily="@font/quicksand"
-                    android:text="@string/agregar_fotos"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageViewFotoPerrito" />
-
-                <AutoCompleteTextView
-                    android:id="@+id/editTextRaza"
-                    android:layout_width="0dp"
-                    android:layout_height="45dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/radius"
-                    android:backgroundTint="#DCDCDC"
-                    android:fontFamily="@font/quicksand"
-                    android:hint="@string/raza"
-                    android:importantForAutofill="no"
-                    android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textColorHint="#000000"
-                    app:layout_constraintEnd_toStartOf="@+id/editTextSubRaza"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/buttonAgregarFotos" />
-
 
                 <AutoCompleteTextView
                     android:id="@+id/editTextSubRaza"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="24dp"
                     android:background="@drawable/radius"
                     android:backgroundTint="#DCDCDC"
                     android:fontFamily="@font/quicksand"
@@ -101,39 +72,37 @@
                     android:textColorHint="#000000"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/editTextRaza"
-                    app:layout_constraintTop_toBottomOf="@+id/buttonAgregarFotos" />
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewFotoPerrito" />
 
-
-                <EditText
-                    android:id="@+id/editTextEdad"
+                <AutoCompleteTextView
+                    android:id="@+id/editTextRaza"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="24dp"
                     android:background="@drawable/radius"
                     android:backgroundTint="#DCDCDC"
                     android:fontFamily="@font/quicksand"
-                    android:hint="@string/edad"
-                    android:inputType="number"
+                    android:hint="@string/raza"
                     android:importantForAutofill="no"
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
-                    app:layout_constraintEnd_toStartOf="@+id/editTextPeso"
+                    app:layout_constraintEnd_toStartOf="@+id/editTextSubRaza"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextRaza" />
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewFotoPerrito" />
 
                 <EditText
                     android:id="@+id/editTextPeso"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="8dp"
                     android:background="@drawable/radius"
                     android:backgroundTint="#DCDCDC"
                     android:fontFamily="@font/quicksand"
                     android:hint="@string/peso_kg"
-                    android:inputType="number"
                     android:importantForAutofill="no"
+                    android:inputType="number"
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
@@ -145,7 +114,7 @@
                     android:id="@+id/editTextNombre"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="16dp"
                     android:background="@drawable/radius"
                     android:backgroundTint="#DCDCDC"
                     android:fontFamily="@font/quicksand"
@@ -155,6 +124,7 @@
                     android:textColor="#000000"
                     android:textColorHint="#000000"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.375"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/editTextPeso" />
 
@@ -162,7 +132,7 @@
                     android:id="@+id/editTextUbicacion"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="24dp"
                     android:background="@drawable/radius"
                     android:backgroundTint="#DCDCDC"
                     android:fontFamily="@font/quicksand"
@@ -172,6 +142,7 @@
                     android:textColor="#000000"
                     android:textColorHint="#000000"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.375"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/editTextNombre" />
 
@@ -179,7 +150,7 @@
                     android:id="@+id/editTextDescripcion"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="16dp"
                     android:background="@drawable/radius"
                     android:backgroundTint="#DCDCDC"
                     android:fontFamily="@font/quicksand"
@@ -189,21 +160,21 @@
                     android:textColor="#000000"
                     android:textColorHint="#000000"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.375"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/editTextUbicacion" />
-
 
                 <EditText
                     android:id="@+id/editTextContactoDueño"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="24dp"
                     android:background="@drawable/radius"
                     android:backgroundTint="#DCDCDC"
                     android:fontFamily="@font/quicksand"
                     android:hint="@string/tu_telefono"
-                    android:inputType="phone"
                     android:importantForAutofill="no"
+                    android:inputType="phone"
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textColorHint="#000000"
@@ -216,7 +187,7 @@
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="24dp"
                     android:background="@drawable/radius"
                     android:backgroundTint="#DCDCDC"
                     android:fontFamily="@font/quicksand"
@@ -232,11 +203,12 @@
                 <RadioGroup
                     android:id="@+id/radioGroupGenero"
                     android:layout_width="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     app:layout_constraintBottom_toTopOf="@+id/btnPostDog"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.45"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/editTextNombreDueño">
 
@@ -245,33 +217,51 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
-                        android:text="Macho" />
+                        android:text="Macho"
+                        tools:layout_editor_absoluteX="87dp"
+                        tools:layout_editor_absoluteY="534dp" />
 
                     <RadioButton
                         android:id="@+id/radioButtonHembra"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Hembra" />
+                        android:text="Hembra"
+                        tools:layout_editor_absoluteX="161dp"
+                        tools:layout_editor_absoluteY="534dp" />
 
                 </RadioGroup>
-
 
                 <Button
                     android:id="@+id/btnPostDog"
                     android:layout_width="206dp"
                     android:layout_height="48dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/radius_button"
                     android:fontFamily="@font/quicksand"
                     android:text="@string/publicar"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.43"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/radioGroupGenero" />
 
-
+                <EditText
+                    android:id="@+id/editTextEdad"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/radius"
+                    android:backgroundTint="#DCDCDC"
+                    android:fontFamily="@font/quicksand"
+                    android:hint="@string/edad"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    app:layout_constraintEnd_toStartOf="@+id/editTextPeso"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextRaza" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

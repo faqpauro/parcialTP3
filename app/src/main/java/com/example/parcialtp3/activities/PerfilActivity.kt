@@ -1,7 +1,6 @@
 package com.example.parcialtp3.activities
 
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.widget.Button
@@ -12,7 +11,6 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
@@ -30,17 +28,12 @@ class PerfilActivity : AppCompatActivity() {
     @Inject
     lateinit var userRepository: UserRepository
     override fun onCreate(savedInstanceState: Bundle?) {
+        setAppTheme()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_perfil)
-        val isDarkMode = sharedViewModel.getDarkModeState(this)
-        if (isDarkMode) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
 
         // Inserción de nombre de usuario
-        val user = sharedViewModel.getUserData(this)
+        val user = sharedViewModel.getUserData(this@PerfilActivity)
         val userName = findViewById<TextView>(R.id.perfil_name)
         userName.text = user?.username
 
@@ -66,6 +59,15 @@ class PerfilActivity : AppCompatActivity() {
         val buttonUploadPhoto = findViewById<Button>(R.id.btn_subir_foto)
         buttonUploadPhoto.setOnClickListener {
             showInputDialog(user)
+        }
+    }
+
+    private fun setAppTheme() {
+        val isDarkMode = sharedViewModel.getUserData(this)?.darkModeSelection ?: false
+        if (isDarkMode) {
+            setTheme(R.style.Theme_ParcialTP3_Dark)
+        } else {
+            setTheme(R.style.Theme_ParcialTP3)
         }
     }
 
